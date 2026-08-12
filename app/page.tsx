@@ -58,7 +58,7 @@ const categories = [
     description: "Pure Bhimseni camphor, organic cotton wicks, kumkum, turmeric and agarbatti.",
     href: "/pooja",
     badge: "Pure & Traditional",
-    image: "https://images.unsplash.com/photo-1605629709230-008b8b8098c1?auto=format&fit=crop&w=600&q=80",
+    image: "/images/pure-bhimseni-camphor.png",
     itemsCount: "Pooja Samagri",
   },
   {
@@ -66,7 +66,7 @@ const categories = [
     description: "Thoughtfully assembled festival and vratha care boxes with 21+ essential items.",
     href: "/care-box",
     badge: "Complete Bundles",
-    image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+    image: "/images/ganesha-pooja-box.png",
     itemsCount: "Vratha Boxes",
   },
   {

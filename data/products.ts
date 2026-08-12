@@ -291,7 +291,7 @@ export const products: Product[] = [
     mrp: 450,
     rating: 4.9,
     reviewsCount: 204,
-    image: "https://images.unsplash.com/photo-1605629709230-008b8b8098c1?auto=format&fit=crop&w=600&q=80",
+    image: "/images/pure-bhimseni-camphor.png",
     description: "100% natural edible-grade Bhimseni Camphor flakes with long-lasting divine aroma and zero toxic residue.",
     specifications: [
       "100% pure natural pine tree extract",
@@ -313,7 +313,7 @@ export const products: Product[] = [
     mrp: 1999,
     rating: 5.0,
     reviewsCount: 78,
-    image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
+    image: "/images/ganesha-pooja-box.png",
     description: "Thoughtfully assembled festival pack containing all required 21 items for traditional Ganesha Pooja.",
     specifications: [
       "Includes Pure Camphor, Kumkum, Turmeric, Cotton Wicks, Sacred Thread",
@@ -335,7 +335,7 @@ export const products: Product[] = [
     mrp: 1750,
     rating: 4.9,
     reviewsCount: 65,
-    image: "https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=600&q=80",
+    image: "/images/varalakshmi-vratham-box.png",
     description: "Curated collection of traditional vratha essentials, Kalasha accessories, sacred threads, and pooja offerings.",
     specifications: [
       "Kalasha decoration items & Sacred Threads",
