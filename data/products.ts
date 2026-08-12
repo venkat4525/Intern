@@ -1,7 +1,7 @@
 export interface Product {
   id: string;
   name: string;
-  category: "groceries" | "medicines" | "medical-equipment" | "rentals" | "pooja" | "care-box" | "wellness" | "home-care";
+  category: "groceries" | "medicines" | "medical-equipment" | "pooja" | "care-box" | "wellness" | "home-care";
   categoryLabel: string;
   price: number;
   mrp: number;
@@ -12,7 +12,7 @@ export interface Product {
   specifications: string[];
   inStock: boolean;
   featured?: boolean;
-  enquiryType?: "purchase" | "rental";
+  enquiryType?: "purchase";
   unit?: string;
 }
 
@@ -147,74 +147,6 @@ export const products: Product[] = [
     inStock: true,
     enquiryType: "purchase",
     unit: "1 Unit"
-  },
-
-  // --- RENTALS ---
-  {
-    id: "hospital-bed-rental-motorized",
-    name: "3-Function Motorized ICU Hospital Bed (Rental)",
-    category: "rentals",
-    categoryLabel: "Equipment Rental",
-    price: 3499,
-    mrp: 4500,
-    rating: 4.9,
-    reviewsCount: 38,
-    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80",
-    description: "Full motorized patient care hospital bed with backrest, knee-rest, and height adjustment remote controls for home recovery.",
-    specifications: [
-      "Remote controlled 3-function adjustments",
-      "Collapsible side rails for patient safety",
-      "High density waterproof mattress included",
-      "Free doorstep installation in Bengaluru",
-      "Monthly rental terms"
-    ],
-    inStock: true,
-    featured: true,
-    enquiryType: "rental",
-    unit: "1 Month Rental"
-  },
-  {
-    id: "oxygen-concentrator-10l-rental",
-    name: "Philips 10L Medical Oxygen Concentrator (Rental)",
-    category: "rentals",
-    categoryLabel: "Equipment Rental",
-    price: 4999,
-    mrp: 6500,
-    rating: 4.9,
-    reviewsCount: 44,
-    image: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1cdb?auto=format&fit=crop&w=600&q=80",
-    description: "Continuous flow medical-grade 10 Liter oxygen concentrator with purity indicator and low sound profile.",
-    specifications: [
-      "Flow rate: 0.5 to 10 Liters per minute",
-      "Oxygen purity: 93% ± 3%",
-      "Built-in oxygen purity monitor & alarms",
-      "24/7 continuous operation design"
-    ],
-    inStock: true,
-    featured: true,
-    enquiryType: "rental",
-    unit: "1 Month Rental"
-  },
-  {
-    id: "pressure-relief-air-mattress-rental",
-    name: "Anti-Bedsore Air Mattress with Motor Pump",
-    category: "rentals",
-    categoryLabel: "Equipment Rental",
-    price: 699,
-    mrp: 1200,
-    rating: 4.7,
-    reviewsCount: 29,
-    image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80",
-    description: "Alternating pressure bubble air mattress system designed to prevent and relieve bedsores for bedridden patients.",
-    specifications: [
-      "Variable pressure pump knob",
-      "Air cycle duration: 6 minutes",
-      "Medical grade PVC material",
-      "Ultra-quiet automatic pump"
-    ],
-    inStock: true,
-    enquiryType: "rental",
-    unit: "1 Month Rental"
   },
 
   // --- GROCERIES ---

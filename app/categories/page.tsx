@@ -1,86 +1,56 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  HeartPulse,
-  House,
-  PackageOpen,
-  Pill,
-  ShoppingBasket,
-  Sparkles,
-  Stethoscope,
-} from "lucide-react";
-
+import { ArrowRight } from "lucide-react";
 import PageShell from "@/components/PageShell";
 
 const categories = [
   {
-    name: "Groceries",
-    description:
-      "Rice, pulses, cooking oils, spices, beverages and everyday household provisions.",
+    name: "Groceries & Pantry",
+    description: "Rice, pulses, cooking oils, spices, dry fruits and everyday household provisions.",
     href: "/groceries",
-    icon: ShoppingBasket,
-    items: ["Rice & grains", "Pulses", "Cooking essentials", "Dry fruits"],
+    image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80",
+    items: ["Rice & grains", "Pulses & Dals", "Cold pressed oils", "Dry fruits combo"],
   },
   {
-    name: "Medicines",
-    description:
-      "Prescription support, OTC products, vitamins, Ayurveda and regular medicine requirements.",
+    name: "Medicines & OTC",
+    description: "Prescription support, OTC products, vitamins, Ayurveda and regular medicine requirements.",
     href: "/medicines",
-    icon: Pill,
-    items: ["Prescription support", "OTC medicines", "Vitamins", "Ayurveda"],
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80",
+    items: ["Senior multivitamins", "OTC medicines", "Vitamins & Minerals", "Ayurvedic care"],
   },
   {
     name: "Medical Equipment",
-    description:
-      "Healthcare and recovery equipment available for purchase or enquiry.",
+    description: "Digital BP monitors, pulse oximeters, glucometers, nebulizers and wheelchairs.",
     href: "/medical-equipment",
-    icon: Stethoscope,
-    items: ["BP monitors", "Nebulizers", "Glucometers", "Hospital equipment"],
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80",
+    items: ["Digital BP monitors", "Pulse oximeters", "Glucometer kits", "Mesh nebulizers"],
   },
-{
-  name: "Equipment Rentals",
-  description:
-    "Flexible rental assistance for hospital beds, Accesibility , oxygen concentrators and more.",
-  href: "/rentals",
-  icon: PackageOpen,
-  items: [
-    "Hospital beds",
-    "Accesibility",
-    "Oxygen concentrators",
-    "Air mattresses",
-  ],
-},
   {
     name: "Daily Pooja Essentials",
-    description:
-      "Convenient access to everyday pooja items and traditional worship essentials.",
+    description: "Pure Bhimseni camphor, organic cotton wicks, kumkum, turmeric and traditional items.",
     href: "/pooja",
-    icon: Sparkles,
-    items: ["Camphor", "Cotton wicks", "Kumkum", "Agarbatti"],
+    image: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80",
+    items: ["Pure Bhimseni Camphor", "Cotton wicks", "Kumkum & Turmeric", "Agarbatti & Diyas"],
   },
   {
     name: "Festival Care Boxes",
-    description:
-      "Thoughtfully assembled festival and vratha boxes delivered to your family.",
+    description: "Thoughtfully assembled festival and vratha care boxes delivered directly to your family.",
     href: "/care-box",
-    icon: PackageOpen,
-    items: ["Ganesha Chaturthi", "Varalakshmi Vratham", "Deepavali", "Navaratri"],
+    image: "https://images.unsplash.com/photo-1607344645866-009c320b5ab8?auto=format&fit=crop&w=600&q=80",
+    items: ["Ganesha Chaturthi Box", "Varalakshmi Vratham Box", "Deepavali Box", "Navaratri Box"],
   },
   {
     name: "Health & Wellness",
-    description:
-      "Nutrition, monitoring, personal care and recovery support for everyday wellbeing.",
+    description: "Nutrition supplements, joint pain relief oils, personal care and senior wellness.",
     href: "/wellness",
-    icon: HeartPulse,
-    items: ["Nutrition", "Personal care", "Monitoring", "Recovery support"],
+    image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80",
+    items: ["Ayurvedic ortho oil", "Senior nutrition", "Personal care", "Recovery support"],
   },
   {
-    name: "Home Care",
-    description:
-      "Comfort, hygiene, safety and daily-living products for individuals and families.",
+    name: "Home Care & Safety",
+    description: "Adult diapers, anti-slip bathroom rubber mats, hygiene and daily-living products.",
     href: "/home-care",
-    icon: House,
-    items: ["Hygiene", "Home safety", "Daily living", "Comfort products"],
+    image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80",
+    items: ["Adult Diapers", "Anti-slip Bath Mats", "Daily living aids", "Comfort products"],
   },
 ];
 
@@ -94,61 +64,59 @@ export default function CategoriesPage() {
           </p>
 
           <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-tight md:text-5xl">
-            Essential categories for everyday care
+            Essential product categories for family care
           </h1>
 
           <p className="mt-5 max-w-3xl text-lg leading-8 text-white/80">
-            Explore groceries, medicines, medical equipment, pooja essentials,
-            festival boxes and home-care support in one trusted place.
+            Browse high-resolution categories for groceries, medicines, medical equipment, daily pooja essentials, festival care boxes, and home-care support.
           </p>
         </div>
       </section>
 
       <section className="bg-[#faf9f6] py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2">
             {categories.map((category) => {
-              const Icon = category.icon;
-
               return (
                 <article
                   key={category.name}
-                  className="rounded-3xl border border-gray-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg md:p-8"
+                  className="group flex flex-col overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl"
                 >
-                  <div className="flex items-start gap-5">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#f4ebdd] text-[#173f35]">
-                      <Icon size={27} />
-                    </div>
-
-                    <div>
-                      <h2 className="text-2xl font-bold text-[#173f35]">
-                        {category.name}
-                      </h2>
-
-                      <p className="mt-3 leading-7 text-gray-600">
-                        {category.description}
-                      </p>
-                    </div>
+                  <div className="relative h-48 w-full overflow-hidden bg-gray-100">
+                    <img
+                      src={category.image}
+                      alt={category.name}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <h2 className="absolute bottom-4 left-6 text-2xl font-extrabold text-white">
+                      {category.name}
+                    </h2>
                   </div>
 
-                  <div className="mt-6 grid gap-2 sm:grid-cols-2">
-                    {category.items.map((item) => (
-                      <div
-                        key={item}
-                        className="rounded-xl bg-[#f4f7ef] px-4 py-3 text-sm font-medium text-[#173f35]"
-                      >
-                        {item}
-                      </div>
-                    ))}
-                  </div>
+                  <div className="flex flex-1 flex-col justify-between p-6 md:p-8">
+                    <p className="leading-relaxed text-gray-600 text-sm md:text-base">
+                      {category.description}
+                    </p>
 
-                  <Link
-                    href={category.href}
-                    className="mt-7 inline-flex items-center gap-2 font-semibold text-[#173f35]"
-                  >
-                    Explore category
-                    <ArrowRight size={17} />
-                  </Link>
+                    <div className="mt-6 grid gap-2 sm:grid-cols-2">
+                      {category.items.map((item) => (
+                        <div
+                          key={item}
+                          className="rounded-xl bg-[#f4f7ef] px-4 py-2.5 text-xs font-semibold text-[#173f35]"
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+
+                    <Link
+                      href={category.href}
+                      className="mt-6 inline-flex items-center gap-2 font-extrabold text-[#0b4938] hover:underline text-sm"
+                    >
+                      Explore {category.name} <ArrowRight size={17} />
+                    </Link>
+                  </div>
                 </article>
               );
             })}
@@ -160,33 +128,25 @@ export default function CategoriesPage() {
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <div className="rounded-3xl bg-white p-8 shadow-sm md:p-12">
             <p className="font-semibold uppercase tracking-[0.18em] text-[#b68d40]">
-              Assisted Ordering
+              Assisted Sourcing
             </p>
 
             <h2 className="mt-3 text-3xl font-bold text-[#173f35]">
-              Unsure which category to choose?
+              Need assistance selecting items?
             </h2>
 
             <p className="mt-4 max-w-3xl text-lg leading-8 text-gray-600">
-              Tell us what you need. Our CareBridge team can guide you through
-              products, rentals, festival boxes and repeat orders.
+              Tell us what you need. Our CareBridge team can guide you through wholesale pricing options, festival boxes, and repeat monthly orders.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-4">
-              <Link
-                href="/help-ordering"
-                className="rounded-xl bg-[#173f35] px-6 py-3 font-semibold text-white"
-              >
-                Get Ordering Help
-              </Link>
-
               <a
                 href="https://wa.me/918904328298"
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-xl border border-[#173f35] px-6 py-3 font-semibold text-[#173f35]"
+                className="rounded-xl bg-[#0b4938] px-6 py-3 font-semibold text-white hover:bg-[#125c48]"
               >
-                WhatsApp CareBridge
+                WhatsApp CareBridge Support
               </a>
             </div>
           </div>

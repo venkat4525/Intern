@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { searchProducts, Product } from "@/data/products";
+import { searchProducts } from "@/data/products";
 import {
   ChevronDown,
   Menu,
@@ -29,7 +29,6 @@ const categoryMenuItems = [
   { name: "Groceries & Pantry", href: "/groceries", icon: ShoppingBasket, desc: "Rice, pulses, oils & staples" },
   { name: "Medicines & OTC", href: "/medicines", icon: Pill, desc: "Prescription support & vitamins" },
   { name: "Medical Equipment", href: "/medical-equipment", icon: Stethoscope, desc: "BP Monitors, oximeters & devices" },
-  { name: "Equipment Rentals", href: "/rentals", icon: PackageCheck, desc: "Beds, concentrators & rentals" },
   { name: "Daily Pooja Essentials", href: "/pooja", icon: Sun, desc: "Camphor, wicks, kumkum & diyas" },
   { name: "Festival Care Boxes", href: "/care-box", icon: Gift, desc: "21+ items curated pooja boxes" },
   { name: "Health & Wellness", href: "/wellness", icon: HeartPulse, desc: "Nutrition & joint pain oils" },
@@ -202,17 +201,6 @@ export default function Header() {
             </div>
 
             <Link
-              href="/rentals"
-              className={`rounded-xl px-3 py-2 text-sm font-bold transition-all ${
-                isActive("/rentals")
-                  ? "bg-white/15 text-[#f4c542]"
-                  : "text-white/90 hover:bg-white/10 hover:text-white"
-              }`}
-            >
-              Rentals
-            </Link>
-
-            <Link
               href="/care-box"
               className={`rounded-xl px-3 py-2 text-sm font-bold transition-all ${
                 isActive("/care-box")
@@ -258,7 +246,7 @@ export default function Header() {
                 <Search size={18} className="text-[#f4c542]" />
               </button>
 
-              {/* Quick Search Overlay Popup (NO PRICES) */}
+              {/* Quick Search Overlay Popup */}
               {searchOpen && (
                 <div className="absolute right-0 top-full mt-2 w-80 sm:w-96 rounded-3xl border border-gray-200 bg-white p-3 shadow-2xl z-50 text-gray-800 animate-in fade-in slide-in-from-top-2">
                   <div className="flex items-center rounded-xl bg-[#faf9f6] p-2 border border-gray-200">
@@ -416,14 +404,6 @@ export default function Header() {
                   </div>
                 )}
               </div>
-
-              <Link
-                href="/rentals"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`py-2 px-3 rounded-xl transition ${isActive("/rentals") ? "bg-white/15 text-[#f4c542]" : ""}`}
-              >
-                Equipment Rentals
-              </Link>
 
               <Link
                 href="/care-box"

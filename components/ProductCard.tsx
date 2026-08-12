@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Product } from "@/data/products";
 import EnquiryModal from "./EnquiryModal";
-import { MessageSquare, Star, CheckCircle, PackageCheck, ArrowRight } from "lucide-react";
+import { MessageSquare, Star, CheckCircle, ArrowRight } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
@@ -46,11 +46,6 @@ export default function ProductCard({ product }: ProductCardProps) {
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
             />
-            {product.enquiryType === "rental" && (
-              <span className="absolute bottom-2 left-2 rounded-lg bg-[#0b4938] px-2.5 py-1 text-xs font-bold text-[#f4c542]">
-                Rental Available
-              </span>
-            )}
           </div>
 
           {/* Rating & Availability */}

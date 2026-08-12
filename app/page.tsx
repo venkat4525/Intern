@@ -11,10 +11,8 @@ import {
   HeartHandshake,
   HeartPulse,
   Home,
-  Mail,
   MessageCircle,
   PackageCheck,
-  PackageOpen,
   Phone,
   Pill,
   Search,
@@ -24,7 +22,6 @@ import {
   Stethoscope,
   Sun,
   Truck,
-  Users,
 } from "lucide-react";
 
 import PageShell from "@/components/PageShell";
@@ -34,74 +31,58 @@ import { products, searchProducts } from "@/data/products";
 const categories = [
   {
     name: "Groceries & Pantry",
-    description: "Rice, pulses, cooking oils, spices, dry fruits and everyday provisions.",
+    description: "Rice, pulses, cooking oils, spices, dry fruits and everyday household provisions.",
     href: "/groceries",
-    icon: ShoppingBasket,
     badge: "Wholesale Sourcing",
-    accent: "from-[#0b4938] to-[#117153]",
+    image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80",
     itemsCount: "500+ Essentials",
   },
   {
     name: "Medicines & OTC",
     description: "Prescription support, OTC products, daily vitamins and regular medicine needs.",
     href: "/medicines",
-    icon: Pill,
     badge: "Verified Quality",
-    accent: "from-[#062d23] to-[#0b4938]",
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80",
     itemsCount: "300+ Products",
   },
   {
     name: "Medical Equipment",
     description: "BP Monitors, fingertip oximeters, glucometers, wheelchairs and recovery devices.",
     href: "/medical-equipment",
-    icon: Stethoscope,
     badge: "Home Devices",
-    accent: "from-[#117153] to-[#178564]",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80",
     itemsCount: "100+ Devices",
-  },
-  {
-    name: "Equipment Rentals",
-    description: "Motorized hospital beds, 10L oxygen concentrators and air mattresses on rental.",
-    href: "/rentals",
-    icon: PackageCheck,
-    badge: "Monthly Terms",
-    accent: "from-[#0b4938] to-[#062d23]",
-    itemsCount: "Flexible Rentals",
   },
   {
     name: "Daily Pooja Essentials",
     description: "Pure Bhimseni camphor, organic cotton wicks, kumkum, turmeric and agarbatti.",
     href: "/pooja",
-    icon: Sun,
     badge: "Pure & Traditional",
-    accent: "from-[#8a672f] to-[#b68d40]",
+    image: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80",
     itemsCount: "Pooja Samagri",
   },
   {
     name: "Festival Care Boxes",
     description: "Thoughtfully assembled festival and vratha care boxes with 21+ essential items.",
     href: "/care-box",
-    icon: Gift,
     badge: "Complete Bundles",
-    accent: "from-[#0b4938] to-[#8a672f]",
+    image: "https://images.unsplash.com/photo-1607344645866-009c320b5ab8?auto=format&fit=crop&w=600&q=80",
     itemsCount: "Vratha Boxes",
   },
   {
     name: "Health & Wellness",
     description: "Nutrition supplements, joint pain relief oils, personal care and senior wellness.",
     href: "/wellness",
-    icon: HeartPulse,
     badge: "Senior Care",
-    accent: "from-[#117153] to-[#0b4938]",
+    image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80",
     itemsCount: "Wellness Packs",
   },
   {
     name: "Home Care & Safety",
     description: "Adult diapers, anti-slip bathroom mats, hygiene and daily-living support.",
     href: "/home-care",
-    icon: Home,
     badge: "Safety & Hygiene",
-    accent: "from-[#062d23] to-[#117153]",
+    image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80",
     itemsCount: "Home Aids",
   },
 ];
@@ -119,7 +100,7 @@ const advantages = [
   },
   {
     title: "Category-Organized Catalog",
-    description: "Groceries, medicines, equipment, rentals, pooja items and festival boxes in one place.",
+    description: "Groceries, medicines, equipment, pooja items and festival boxes in one place.",
     icon: PackageCheck,
   },
   {
@@ -149,7 +130,7 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-white/80">
-              Browse categories for groceries, medicines, medical equipment, rentals, daily pooja items, and festival boxes. Submit enquiries directly for wholesale pricing and personal assistance.
+              Browse categories for groceries, medicines, medical equipment, daily pooja items, and festival boxes. Submit enquiries directly for wholesale pricing and personal assistance.
             </p>
 
             {/* Quick Hero Search Input */}
@@ -267,7 +248,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. CATEGORY-FIRST LAYOUT STRUCTURE (PRIMARY VIEW) */}
+      {/* 2. CATEGORY-FIRST LAYOUT STRUCTURE WITH REALISTIC PRODUCT IMAGERY */}
       <section id="categories-section" className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
@@ -278,45 +259,54 @@ export default function HomePage() {
               Explore Product Categories
             </h2>
             <p className="mt-3 text-base md:text-lg text-gray-600">
-              Select a category below to browse curated healthcare, everyday pantry, rentals, and pooja items. Click any category to view items filtered for that category.
+              Select a category below to browse curated healthcare, everyday pantry, and pooja items. Click any category to view items filtered for that category.
             </p>
           </div>
 
-          {/* Grid of Product Categories */}
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Grid of Product Categories with Realistic Imagery */}
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {categories.map((cat) => {
-              const Icon = cat.icon;
-
               return (
                 <Link
                   key={cat.name}
                   href={cat.href}
-                  className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-gray-200 bg-[#faf9f6] p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:bg-white hover:border-[#0b4938]"
+                  className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-gray-200 bg-[#faf9f6] shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:bg-white hover:border-[#0b4938]"
                 >
-                  <div>
-                    <div className="flex items-center justify-between mb-5">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f4ebdd] text-[#173f35] transition duration-300 group-hover:bg-[#0b4938] group-hover:text-white">
-                        <Icon size={28} />
-                      </div>
-                      <span className="rounded-full bg-white px-3 py-1 text-[11px] font-bold text-[#b68d40] border border-amber-200 shadow-sm">
-                        {cat.badge}
-                      </span>
-                    </div>
+                  {/* High-Resolution Category Product Image Header */}
+                  <div className="relative h-48 w-full overflow-hidden bg-gray-100">
+                    <img
+                      src={cat.image}
+                      alt={cat.name}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                    
+                    <span className="absolute top-3 right-3 rounded-full bg-white/90 backdrop-blur-md px-3 py-1 text-[11px] font-extrabold text-[#0b4938] shadow-md border border-white">
+                      {cat.badge}
+                    </span>
 
-                    <h3 className="text-xl font-bold text-[#173f35] group-hover:text-[#0b4938] transition-colors">
-                      {cat.name}
-                    </h3>
-
-                    <p className="mt-2.5 text-xs leading-relaxed text-gray-600 min-h-[48px]">
-                      {cat.description}
-                    </p>
+                    <span className="absolute bottom-3 left-3 text-xs font-bold text-white bg-[#0b4938]/80 backdrop-blur-sm px-2.5 py-0.5 rounded-lg">
+                      {cat.itemsCount}
+                    </span>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-gray-200/60 flex items-center justify-between text-xs font-bold">
-                    <span className="text-gray-400 group-hover:text-[#173f35]">{cat.itemsCount}</span>
-                    <span className="inline-flex items-center gap-1.5 text-[#0b4938] group-hover:translate-x-1 transition-transform">
-                      Explore Items <ArrowRight size={15} />
-                    </span>
+                  <div className="flex flex-1 flex-col justify-between p-6">
+                    <div>
+                      <h3 className="text-xl font-extrabold text-[#173f35] group-hover:text-[#0b4938] transition-colors">
+                        {cat.name}
+                      </h3>
+
+                      <p className="mt-2.5 text-xs leading-relaxed text-gray-600 min-h-[44px]">
+                        {cat.description}
+                      </p>
+                    </div>
+
+                    <div className="mt-6 pt-4 border-t border-gray-200/60 flex items-center justify-between text-xs font-bold text-[#0b4938]">
+                      <span>View Products</span>
+                      <span className="inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                        Explore Items <ArrowRight size={15} />
+                      </span>
+                    </div>
                   </div>
                 </Link>
               );

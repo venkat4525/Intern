@@ -15,7 +15,7 @@ export default function Footer() {
             className="h-20 w-auto rounded-xl object-contain bg-white/10 p-2"
           />
           <p className="mt-4 text-sm leading-6 text-white/75">
-            CareBridge is a category-organized family care platform providing wholesale sourcing for groceries, medicines, medical equipment, rentals, and pooja care boxes with personal assistance.
+            CareBridge is a category-organized family care platform providing wholesale sourcing for groceries, medicines, medical equipment, daily pooja essentials, and festival care boxes with personal assistance.
           </p>
         </div>
 
@@ -25,9 +25,10 @@ export default function Footer() {
             <Link href="/groceries" className="hover:text-white transition">Groceries & Pantry</Link>
             <Link href="/medicines" className="hover:text-white transition">Medicines & Supplements</Link>
             <Link href="/medical-equipment" className="hover:text-white transition">Medical Devices & Equipment</Link>
-            <Link href="/rentals" className="hover:text-white transition">Equipment Rentals</Link>
             <Link href="/pooja" className="hover:text-white transition">Daily Pooja Essentials</Link>
             <Link href="/care-box" className="hover:text-white transition">Festival Care Boxes</Link>
+            <Link href="/wellness" className="hover:text-white transition">Health & Wellness</Link>
+            <Link href="/home-care" className="hover:text-white transition">Home Care & Safety</Link>
           </div>
         </div>
 
