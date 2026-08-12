@@ -28,14 +28,14 @@ const categories = [
     name: "Daily Pooja Essentials",
     description: "Pure Bhimseni camphor, organic cotton wicks, kumkum, turmeric and traditional items.",
     href: "/pooja",
-    image: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80",
+    image: "https://images.unsplash.com/photo-1605629709230-008b8b8098c1?auto=format&fit=crop&w=600&q=80",
     items: ["Pure Bhimseni Camphor", "Cotton wicks", "Kumkum & Turmeric", "Agarbatti & Diyas"],
   },
   {
     name: "Festival Care Boxes",
     description: "Thoughtfully assembled festival and vratha care boxes delivered directly to your family.",
     href: "/care-box",
-    image: "https://images.unsplash.com/photo-1607344645866-009c320b5ab8?auto=format&fit=crop&w=600&q=80",
+    image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
     items: ["Ganesha Chaturthi Box", "Varalakshmi Vratham Box", "Deepavali Box", "Navaratri Box"],
   },
   {
