@@ -6,8 +6,8 @@ import {
   ArrowRight,
   BadgeIndianRupee,
   CheckCircle2,
-  CircleHelp,
   Clock3,
+  Gift,
   HeartHandshake,
   HeartPulse,
   Home,
@@ -22,9 +22,9 @@ import {
   ShoppingBasket,
   Sparkles,
   Stethoscope,
+  Sun,
   Truck,
   Users,
-  Zap,
 } from "lucide-react";
 
 import PageShell from "@/components/PageShell";
@@ -33,82 +33,98 @@ import { products, searchProducts } from "@/data/products";
 
 const categories = [
   {
-    name: "Groceries",
-    description: "Rice, pulses, oils, spices, dry fruits and everyday household essentials.",
+    name: "Groceries & Pantry",
+    description: "Rice, pulses, cooking oils, spices, dry fruits and everyday provisions.",
     href: "/groceries",
     icon: ShoppingBasket,
-    badge: "Wholesale Rates",
+    badge: "Wholesale Sourcing",
+    accent: "from-[#0b4938] to-[#117153]",
+    itemsCount: "500+ Essentials",
   },
   {
-    name: "Medicines",
-    description: "Prescription support, OTC products, vitamins and regular medicine needs.",
+    name: "Medicines & OTC",
+    description: "Prescription support, OTC products, daily vitamins and regular medicine needs.",
     href: "/medicines",
     icon: Pill,
-    badge: "100% Genuine",
+    badge: "Verified Quality",
+    accent: "from-[#062d23] to-[#0b4938]",
+    itemsCount: "300+ Products",
   },
   {
     name: "Medical Equipment",
-    description: "BP Monitors, oximeters, glucometers, wheelchairs and recovery equipment.",
+    description: "BP Monitors, fingertip oximeters, glucometers, wheelchairs and recovery devices.",
     href: "/medical-equipment",
     icon: Stethoscope,
-    badge: "Warranty Included",
+    badge: "Home Devices",
+    accent: "from-[#117153] to-[#178564]",
+    itemsCount: "100+ Devices",
   },
   {
     name: "Equipment Rentals",
-    description: "Hospital beds, oxygen concentrators, air mattresses and patient-care rentals.",
+    description: "Motorized hospital beds, 10L oxygen concentrators and air mattresses on rental.",
     href: "/rentals",
     icon: PackageCheck,
     badge: "Monthly Terms",
+    accent: "from-[#0b4938] to-[#062d23]",
+    itemsCount: "Flexible Rentals",
   },
   {
     name: "Daily Pooja Essentials",
-    description: "Bhimseni camphor, cotton wicks, kumkum, turmeric, agarbatti and traditional items.",
+    description: "Pure Bhimseni camphor, organic cotton wicks, kumkum, turmeric and agarbatti.",
     href: "/pooja",
-    icon: Sparkles,
-    badge: "Purity Assured",
+    icon: Sun,
+    badge: "Pure & Traditional",
+    accent: "from-[#8a672f] to-[#b68d40]",
+    itemsCount: "Pooja Samagri",
   },
   {
     name: "Festival Care Boxes",
-    description: "Complete festival and vratha essentials thoughtfully packed together.",
+    description: "Thoughtfully assembled festival and vratha care boxes with 21+ essential items.",
     href: "/care-box",
-    icon: PackageOpen,
-    badge: "21+ Items Pack",
+    icon: Gift,
+    badge: "Complete Bundles",
+    accent: "from-[#0b4938] to-[#8a672f]",
+    itemsCount: "Vratha Boxes",
   },
   {
     name: "Health & Wellness",
-    description: "Nutrition, joint pain oils, monitoring and recovery-support products.",
+    description: "Nutrition supplements, joint pain relief oils, personal care and senior wellness.",
     href: "/wellness",
     icon: HeartPulse,
-    badge: "Senior Special",
+    badge: "Senior Care",
+    accent: "from-[#117153] to-[#0b4938]",
+    itemsCount: "Wellness Packs",
   },
   {
-    name: "Home Care",
-    description: "Adult diapers, anti-slip bath mats, daily-living and home-safety essentials.",
+    name: "Home Care & Safety",
+    description: "Adult diapers, anti-slip bathroom mats, hygiene and daily-living support.",
     href: "/home-care",
     icon: Home,
-    badge: "Hygiene Certified",
+    badge: "Safety & Hygiene",
+    accent: "from-[#062d23] to-[#117153]",
+    itemsCount: "Home Aids",
   },
 ];
 
 const advantages = [
   {
     title: "Competitive Wholesale Sourcing",
-    description: "We work directly with verified wholesale dealers and authorized distributors, passing real value to families.",
+    description: "We work directly with verified wholesale dealers and authorized distributors.",
     icon: BadgeIndianRupee,
   },
   {
     title: "Personal Ordering Assistance",
-    description: "Call or WhatsApp our team for personalized guidance, recurring monthly orders, or urgent family requirements.",
+    description: "Call or WhatsApp our team for guidance, repeat monthly lists, or family orders.",
     icon: HeartHandshake,
   },
   {
-    title: "Everything In One Place",
-    description: "Groceries, medicines, medical equipment, rentals, daily pooja items and festival care boxes under one roof.",
+    title: "Category-Organized Catalog",
+    description: "Groceries, medicines, equipment, rentals, pooja items and festival boxes in one place.",
     icon: PackageCheck,
   },
   {
     title: "Doorstep Delivery to Loved Ones",
-    description: "Arrange essential products and medical gear delivered straight to your parents' home in Bengaluru.",
+    description: "Arrange essential products delivered directly to your parents or family in Bengaluru.",
     icon: Truck,
   },
 ];
@@ -120,20 +136,20 @@ export default function HomePage() {
 
   return (
     <PageShell>
-      {/* Hero Section */}
+      {/* 1. Hero Section */}
       <section className="overflow-hidden bg-gradient-to-br from-[#062d23] via-[#0b4938] to-[#117153] text-white">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2 lg:py-24">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full bg-[#e2c98a]/20 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#e2c98a] border border-[#e2c98a]/30">
-              <Sparkles size={14} /> The CareBridge Marketplace
+              <Sparkles size={14} /> Category-Based Enquiry Platform
             </div>
 
             <h1 className="mt-4 max-w-3xl text-3xl font-extrabold leading-tight md:text-5xl lg:text-6xl">
-              Everything your family needs, delivered with care
+              Everything your family needs, organized by category
             </h1>
 
             <p className="mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-white/80">
-              Quality groceries, medicines, medical equipment, rentals, and daily pooja essentials sourced from trusted wholesale partners at competitive prices.
+              Browse categories for groceries, medicines, medical equipment, rentals, daily pooja items, and festival boxes. Submit enquiries directly for wholesale pricing and personal assistance.
             </p>
 
             {/* Quick Hero Search Input */}
@@ -142,7 +158,7 @@ export default function HomePage() {
                 <Search size={22} className="ml-3 shrink-0 text-gray-400" />
                 <input
                   type="text"
-                  placeholder="Search groceries, BP monitors, rice, oxygen..."
+                  placeholder="Search categories or products..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full bg-transparent px-3 py-2 text-sm md:text-base focus:outline-none text-gray-800 placeholder-gray-400"
@@ -163,7 +179,7 @@ export default function HomePage() {
                   {searchResults.length > 0 ? (
                     <div className="space-y-2">
                       <p className="text-xs font-bold uppercase tracking-wider text-gray-400 px-2">
-                        Products Found ({searchResults.length})
+                        Matching Items ({searchResults.length})
                       </p>
                       {searchResults.map((item) => (
                         <Link
@@ -178,24 +194,26 @@ export default function HomePage() {
                               <span className="text-xs text-gray-500">{item.categoryLabel}</span>
                             </div>
                           </div>
-                          <span className="text-sm font-extrabold text-[#0b4938]">₹{item.price}</span>
+                          <span className="text-xs font-bold text-[#0b4938] bg-emerald-50 px-2.5 py-1 rounded-md">
+                            Enquire &rarr;
+                          </span>
                         </Link>
                       ))}
                     </div>
                   ) : (
-                    <p className="p-4 text-center text-sm text-gray-500">No products found matching "{searchQuery}"</p>
+                    <p className="p-4 text-center text-sm text-gray-500">No items found matching "{searchQuery}"</p>
                   )}
                 </div>
               )}
             </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/categories"
+              <a
+                href="#categories-section"
                 className="inline-flex items-center gap-2 rounded-xl bg-[#e2c98a] px-6 py-3.5 font-extrabold text-[#173f35] transition hover:bg-[#ead7a7] shadow-lg"
               >
-                Explore All Products <ArrowRight size={18} />
-              </Link>
+                Browse Categories <ArrowRight size={18} />
+              </a>
 
               <a
                 href="https://wa.me/918904328298"
@@ -203,7 +221,7 @@ export default function HomePage() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl border border-white/40 px-6 py-3.5 font-bold text-white transition hover:bg-white/10"
               >
-                <MessageCircle size={18} /> WhatsApp Support
+                <MessageCircle size={18} /> WhatsApp Assistance
               </a>
             </div>
           </div>
@@ -213,14 +231,14 @@ export default function HomePage() {
             <div className="rounded-2xl bg-white p-6 text-[#173f35]">
               <div className="flex items-center justify-between border-b border-gray-100 pb-4">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#b68d40]">Direct Assisted Order</span>
-                  <h3 className="text-lg font-bold text-[#173f35]">Not comfortable ordering online?</h3>
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#b68d40]">Assisted Sourcing Desk</span>
+                  <h3 className="text-lg font-bold text-[#173f35]">Need help finding items?</h3>
                 </div>
                 <HeartHandshake className="h-8 w-8 text-[#0b4938] shrink-0" />
               </div>
 
               <p className="mt-3 text-sm leading-relaxed text-gray-600">
-                Call or WhatsApp our dedicated support desk. Share your monthly grocery list or medical equipment requirement, and we will place the order for you.
+                Call or WhatsApp our team. Tell us your product requirements or recurring monthly lists, and we will check availability and coordinate doorstep fulfillment.
               </p>
 
               <div className="mt-5 grid grid-cols-2 gap-3">
@@ -236,7 +254,7 @@ export default function HomePage() {
                   rel="noreferrer"
                   className="flex items-center justify-center gap-2 rounded-xl border border-[#0b4938] py-3 text-xs font-bold text-[#0b4938] transition hover:bg-[#f4f7ef]"
                 >
-                  <MessageCircle size={15} /> WhatsApp Us
+                  <MessageCircle size={15} /> WhatsApp
                 </a>
               </div>
 
@@ -249,27 +267,85 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Featured Products Section (DYNAMIC PRODUCT CARDS) */}
-      <section className="bg-[#faf9f6] py-16 md:py-20">
+      {/* 2. CATEGORY-FIRST LAYOUT STRUCTURE (PRIMARY VIEW) */}
+      <section id="categories-section" className="bg-white py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-5 md:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f4ebdd] px-4 py-1 text-xs font-extrabold uppercase tracking-wider text-[#173f35]">
+              <PackageCheck size={14} /> Category-First Browsing
+            </span>
+            <h2 className="mt-3 text-3xl font-extrabold text-[#173f35] md:text-5xl leading-tight">
+              Explore Product Categories
+            </h2>
+            <p className="mt-3 text-base md:text-lg text-gray-600">
+              Select a category below to browse curated healthcare, everyday pantry, rentals, and pooja items. Click any category to view items filtered for that category.
+            </p>
+          </div>
+
+          {/* Grid of Product Categories */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {categories.map((cat) => {
+              const Icon = cat.icon;
+
+              return (
+                <Link
+                  key={cat.name}
+                  href={cat.href}
+                  className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-gray-200 bg-[#faf9f6] p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:bg-white hover:border-[#0b4938]"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f4ebdd] text-[#173f35] transition duration-300 group-hover:bg-[#0b4938] group-hover:text-white">
+                        <Icon size={28} />
+                      </div>
+                      <span className="rounded-full bg-white px-3 py-1 text-[11px] font-bold text-[#b68d40] border border-amber-200 shadow-sm">
+                        {cat.badge}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-[#173f35] group-hover:text-[#0b4938] transition-colors">
+                      {cat.name}
+                    </h3>
+
+                    <p className="mt-2.5 text-xs leading-relaxed text-gray-600 min-h-[48px]">
+                      {cat.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 pt-4 border-t border-gray-200/60 flex items-center justify-between text-xs font-bold">
+                    <span className="text-gray-400 group-hover:text-[#173f35]">{cat.itemsCount}</span>
+                    <span className="inline-flex items-center gap-1.5 text-[#0b4938] group-hover:translate-x-1 transition-transform">
+                      Explore Items <ArrowRight size={15} />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 3. FEATURED PRODUCTS (WITH ENQUIRE NOW CTAs & ZERO PRICES) */}
+      <section className="bg-[#faf9f6] py-16 md:py-20 border-t border-gray-200/60">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end mb-10">
             <div>
               <span className="font-semibold uppercase tracking-[0.18em] text-[#b68d40] text-xs">
-                Handpicked Products
+                Available Products
               </span>
               <h2 className="mt-1 text-3xl font-extrabold text-[#173f35] md:text-4xl">
-                Featured Family Care Products
+                Featured Family Care Items
               </h2>
               <p className="mt-2 text-base text-gray-600">
-                Click any product card to view specifications, availability, and instant add-to-cart.
+                Click "Enquire Now" on any item to submit an inquiry or speak directly on WhatsApp.
               </p>
             </div>
 
             <Link
               href="/categories"
-              className="inline-flex items-center gap-2 font-bold text-[#0b4938] hover:underline"
+              className="inline-flex items-center gap-2 font-bold text-[#0b4938] hover:underline text-sm"
             >
-              View Full Catalog <ArrowRight size={17} />
+              View Full Category Catalog <ArrowRight size={17} />
             </Link>
           </div>
 
@@ -282,67 +358,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Shop By Category */}
+      {/* 4. ADVANTAGES SECTION */}
       <section className="bg-white py-16 md:py-20 border-t border-gray-100">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="font-semibold uppercase tracking-[0.18em] text-[#b68d40] text-xs">
-              Explore Everything
+              Why CareBridge
             </span>
             <h2 className="mt-1 text-3xl font-extrabold text-[#173f35] md:text-4xl">
-              Shop by Category
-            </h2>
-            <p className="mt-3 text-base text-gray-600">
-              Find everyday provisions, healthcare products, pooja supplies and festival boxes through one trusted platform.
-            </p>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {categories.map((category) => {
-              const Icon = category.icon;
-
-              return (
-                <Link
-                  key={category.name}
-                  href={category.href}
-                  className="group relative rounded-3xl border border-gray-200 bg-[#faf9f6] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f4ebdd] text-[#173f35] transition group-hover:bg-[#0b4938] group-hover:text-white">
-                      <Icon size={26} />
-                    </div>
-                    <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-[#b68d40] border border-amber-200">
-                      {category.badge}
-                    </span>
-                  </div>
-
-                  <h3 className="mt-5 text-xl font-bold text-[#173f35]">
-                    {category.name}
-                  </h3>
-
-                  <p className="mt-2 text-xs leading-relaxed text-gray-600 min-h-[40px]">
-                    {category.description}
-                  </p>
-
-                  <span className="mt-4 inline-flex items-center gap-2 text-xs font-extrabold text-[#0b4938]">
-                    Explore Category <ArrowRight size={14} className="transition group-hover:translate-x-1" />
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose CareBridge */}
-      <section className="bg-[#f4ebdd]/60 py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="font-semibold uppercase tracking-[0.18em] text-[#b68d40] text-xs">
-              The CareBridge Advantage
-            </span>
-            <h2 className="mt-1 text-3xl font-extrabold text-[#173f35] md:text-4xl">
-              Better value, trusted quality and personal care
+              Trusted wholesale quality & personal care
             </h2>
           </div>
 
@@ -353,7 +377,7 @@ export default function HomePage() {
               return (
                 <div
                   key={item.title}
-                  className="rounded-3xl border border-gray-200 bg-white p-7 shadow-sm transition hover:shadow-md"
+                  className="rounded-3xl border border-gray-200 bg-[#faf9f6] p-7 shadow-sm transition hover:shadow-md"
                 >
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f4ebdd] text-[#173f35]">
                     <Icon size={24} />
@@ -373,7 +397,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Contact CTA */}
+      {/* 5. CONTACT CTA */}
       <section className="bg-[#0b4938] py-16 text-white">
         <div className="mx-auto max-w-7xl px-5 text-center md:px-8">
           <span className="font-bold uppercase tracking-[0.18em] text-[#e2c98a] text-xs">
@@ -383,7 +407,7 @@ export default function HomePage() {
             Let us help you arrange your family essentials
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-base text-white/80">
-            Contact the CareBridge team for groceries, medicines, medical equipment, festival boxes or custom family care orders.
+            Contact the CareBridge desk for groceries, medicines, medical equipment, festival boxes or custom family care orders.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">

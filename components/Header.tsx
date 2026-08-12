@@ -3,19 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { useCart } from "./CartContext";
-import { products, searchProducts, Product } from "@/data/products";
+import { usePathname } from "next/navigation";
+import { searchProducts, Product } from "@/data/products";
 import {
   ChevronDown,
   Menu,
   Phone,
-  ShoppingBag,
   Truck,
   UserCheck,
   X,
   Search,
-  Sparkles,
+  MessageSquare,
   HeartPulse,
   PackageCheck,
   Stethoscope,
@@ -40,9 +38,6 @@ const categoryMenuItems = [
 
 export default function Header() {
   const pathname = usePathname();
-  const router = useRouter();
-  const { count, subtotal } = useCart();
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [categoriesDropdownOpen, setCategoriesDropdownOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -83,13 +78,13 @@ export default function Header() {
 
   return (
     <>
-      {/* 1. TOP ANNOUNCEMENT BAR (100% Full Width Background) */}
+      {/* 1. TOP ANNOUNCEMENT BAR */}
       <div className="w-full bg-[#041f18] text-white border-b border-emerald-900/50">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-1.5 text-xs md:px-8">
           <div className="flex items-center gap-2 font-medium text-emerald-300">
             <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
-            <span className="hidden sm:inline">✨ Wholesale Prices • Verified Dealers • Same-Day Bengaluru Support</span>
-            <span className="sm:hidden">✨ Wholesale Family Care Delivery</span>
+            <span className="hidden sm:inline">✨ Category-Based Assisted Sourcing • Same-Day Bengaluru Support</span>
+            <span className="sm:hidden">✨ Category-First Family Care Platform</span>
           </div>
 
           <div className="flex items-center gap-4 text-xs font-semibold text-white/90">
@@ -98,7 +93,7 @@ export default function Header() {
               className="flex items-center gap-1.5 transition hover:text-[#f4c542]"
             >
               <Truck size={13} className="text-[#f4c542]" />
-              <span>Track Order</span>
+              <span>Track Orders</span>
             </Link>
             <span className="text-white/30">|</span>
             <Link
@@ -129,7 +124,6 @@ export default function Header() {
 
           {/* Desktop Navigation Items */}
           <nav className="hidden items-center gap-1 lg:flex xl:gap-2">
-            {/* Home */}
             <Link
               href="/"
               className={`rounded-xl px-3 py-2 text-sm font-bold transition-all ${
@@ -141,7 +135,7 @@ export default function Header() {
               Home
             </Link>
 
-            {/* Shop Categories Mega Dropdown */}
+            {/* Categories Dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setCategoriesDropdownOpen(!categoriesDropdownOpen)}
@@ -169,7 +163,7 @@ export default function Header() {
                 >
                   <div className="flex items-center justify-between border-b border-gray-100 pb-3 mb-3">
                     <span className="text-xs font-extrabold uppercase tracking-wider text-[#b68d40]">
-                      CareBridge Marketplace
+                      CareBridge Categories
                     </span>
                     <Link
                       href="/categories"
@@ -207,7 +201,6 @@ export default function Header() {
               )}
             </div>
 
-            {/* Equipment Rentals */}
             <Link
               href="/rentals"
               className={`rounded-xl px-3 py-2 text-sm font-bold transition-all ${
@@ -219,7 +212,6 @@ export default function Header() {
               Rentals
             </Link>
 
-            {/* Festival Care Boxes */}
             <Link
               href="/care-box"
               className={`rounded-xl px-3 py-2 text-sm font-bold transition-all ${
@@ -231,7 +223,6 @@ export default function Header() {
               Festival Boxes
             </Link>
 
-            {/* About */}
             <Link
               href="/about"
               className={`rounded-xl px-3 py-2 text-sm font-bold transition-all ${
@@ -243,7 +234,6 @@ export default function Header() {
               About
             </Link>
 
-            {/* Contact */}
             <Link
               href="/contact"
               className={`rounded-xl px-3 py-2 text-sm font-bold transition-all ${
@@ -258,7 +248,7 @@ export default function Header() {
 
           {/* Right Action Icons & Search */}
           <div className="flex items-center gap-2.5">
-            {/* Quick Search Button / Input Trigger */}
+            {/* Quick Search */}
             <div className="relative" ref={searchRef}>
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
@@ -268,14 +258,14 @@ export default function Header() {
                 <Search size={18} className="text-[#f4c542]" />
               </button>
 
-              {/* Quick Search Overlay Popup */}
+              {/* Quick Search Overlay Popup (NO PRICES) */}
               {searchOpen && (
                 <div className="absolute right-0 top-full mt-2 w-80 sm:w-96 rounded-3xl border border-gray-200 bg-white p-3 shadow-2xl z-50 text-gray-800 animate-in fade-in slide-in-from-top-2">
                   <div className="flex items-center rounded-xl bg-[#faf9f6] p-2 border border-gray-200">
                     <Search size={18} className="ml-2 text-gray-400 shrink-0" />
                     <input
                       type="text"
-                      placeholder="Search products, BP monitor, rice..."
+                      placeholder="Search items, BP monitor, rice..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       autoFocus
@@ -309,11 +299,13 @@ export default function Header() {
                                 <span className="text-[10px] text-gray-400">{item.categoryLabel}</span>
                               </div>
                             </div>
-                            <span className="text-xs font-extrabold text-[#0b4938] shrink-0">₹{item.price}</span>
+                            <span className="text-xs font-bold text-[#0b4938] bg-emerald-50 px-2 py-0.5 rounded shrink-0">
+                              Enquire
+                            </span>
                           </Link>
                         ))
                       ) : (
-                        <p className="p-3 text-center text-xs text-gray-500">No products found</p>
+                        <p className="p-3 text-center text-xs text-gray-500">No items found</p>
                       )}
                     </div>
                   )}
@@ -321,7 +313,7 @@ export default function Header() {
               )}
             </div>
 
-            {/* Direct Phone Call Pill Button */}
+            {/* Direct Phone Call Button */}
             <a
               href="tel:+918904328298"
               className="hidden items-center gap-2 rounded-xl bg-gradient-to-r from-[#f4c542] to-[#e4b532] px-3.5 py-2 text-xs font-extrabold text-[#12372c] transition duration-200 hover:scale-105 hover:shadow-md md:flex"
@@ -330,22 +322,19 @@ export default function Header() {
               <span>Call Us</span>
             </a>
 
-            {/* Cart Button */}
-            <Link
-              href="/cart"
-              className="relative flex items-center gap-2 rounded-xl bg-white/15 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-white/25 border border-white/20"
-              aria-label="View Cart"
+            {/* Enquiry Desk Button */}
+            <a
+              href="https://wa.me/918904328298"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 rounded-xl bg-white/15 px-3.5 py-2 text-xs font-bold text-white transition hover:bg-white/25 border border-white/20"
+              aria-label="Enquire Desk"
             >
-              <ShoppingBag size={18} className="text-[#f4c542]" />
-              <span className="hidden sm:inline">Cart</span>
-              {count > 0 && (
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#e63946] text-[11px] font-extrabold text-white animate-pulse">
-                  {count}
-                </span>
-              )}
-            </Link>
+              <MessageSquare size={16} className="text-[#f4c542]" />
+              <span className="hidden sm:inline">Enquire Desk</span>
+            </a>
 
-            {/* Mobile Drawer Trigger Button */}
+            {/* Mobile Drawer Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="rounded-xl p-2 text-[#f4c542] hover:bg-white/10 lg:hidden"
@@ -382,7 +371,7 @@ export default function Header() {
                       className="flex items-center justify-between text-xs p-1.5 hover:bg-gray-50 rounded-lg"
                     >
                       <span className="font-bold text-[#173f35] line-clamp-1">{item.name}</span>
-                      <span className="font-extrabold text-[#0b4938]">₹{item.price}</span>
+                      <span className="font-bold text-[#0b4938]">Enquire &rarr;</span>
                     </Link>
                   ))}
                 </div>
@@ -462,7 +451,6 @@ export default function Header() {
 
               <hr className="border-white/10 my-3" />
 
-              {/* Utility Tools */}
               <div className="flex flex-col gap-2.5">
                 <Link
                   href="/orders"

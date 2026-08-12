@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, MapPin, Phone, ShieldCheck, ShoppingBag, Truck, UserCheck } from "lucide-react";
+import { Mail, MapPin, Phone, ShieldCheck, MessageSquare, Truck, UserCheck } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -15,12 +15,12 @@ export default function Footer() {
             className="h-20 w-auto rounded-xl object-contain bg-white/10 p-2"
           />
           <p className="mt-4 text-sm leading-6 text-white/75">
-            CareBridge is a dedicated family-care marketplace providing wholesale pricing on groceries, medicines, medical equipment, rentals, and pooja care boxes with assisted ordering.
+            CareBridge is a category-organized family care platform providing wholesale sourcing for groceries, medicines, medical equipment, rentals, and pooja care boxes with personal assistance.
           </p>
         </div>
 
         <div>
-          <h3 className="text-lg font-bold text-[#f4c542]">Shop Categories</h3>
+          <h3 className="text-lg font-bold text-[#f4c542]">Product Categories</h3>
           <div className="mt-4 flex flex-col gap-2.5 text-sm text-white/80">
             <Link href="/groceries" className="hover:text-white transition">Groceries & Pantry</Link>
             <Link href="/medicines" className="hover:text-white transition">Medicines & Supplements</Link>
@@ -32,11 +32,11 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="text-lg font-bold text-[#f4c542]">Quick Links & Tools</h3>
+          <h3 className="text-lg font-bold text-[#f4c542]">Assisted Support & Tools</h3>
           <div className="mt-4 flex flex-col gap-2.5 text-sm text-white/80">
-            <Link href="/cart" className="hover:text-white transition flex items-center gap-1.5">
-              <ShoppingBag size={15} className="text-[#f4c542]" /> Shopping Cart
-            </Link>
+            <a href="https://wa.me/918904328298" target="_blank" rel="noreferrer" className="hover:text-white transition flex items-center gap-1.5">
+              <MessageSquare size={15} className="text-[#f4c542]" /> WhatsApp Enquiry Desk
+            </a>
             <Link href="/orders" className="hover:text-white transition flex items-center gap-1.5">
               <Truck size={15} className="text-[#f4c542]" /> Track Your Orders
             </Link>
@@ -68,7 +68,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10 py-5 text-center text-xs text-white/60">
-        © {new Date().getFullYear()} CareBridge Family Care Marketplace. All rights reserved. Built with Razorpay Secure Payments.
+        © {new Date().getFullYear()} CareBridge Family Care Category Marketplace. All rights reserved.
       </div>
     </footer>
   );

@@ -2,24 +2,22 @@
 
 import { use, useState } from "react";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import PageShell from "@/components/PageShell";
 import ProductCard from "@/components/ProductCard";
+import EnquiryModal from "@/components/EnquiryModal";
 import { getProductById, getProductsByCategory, Product } from "@/data/products";
-import { useCart } from "@/components/CartContext";
 import {
   ArrowLeft,
   CheckCircle2,
   HeartHandshake,
   MessageCircle,
+  MessageSquare,
   Minus,
   PackageCheck,
   Plus,
   ShieldCheck,
-  ShoppingBag,
   Star,
-  Truck,
-  Zap
+  Truck
 } from "lucide-react";
 
 export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -50,33 +48,12 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
 }
 
 function ProductView({ product }: { product: Product }) {
-  const { add } = useCart();
   const [qty, setQty] = useState(1);
   const [imgSrc, setImgSrc] = useState(product.image);
-  const [addedToast, setAddedToast] = useState(false);
-
-  const discountPercent = product.mrp > product.price
-    ? Math.round(((product.mrp - product.price) / product.mrp) * 100)
-    : 0;
-
-  const handleAddToCart = () => {
-    add(
-      {
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        category: product.categoryLabel,
-        unit: product.unit,
-      },
-      qty
-    );
-    setAddedToast(true);
-    setTimeout(() => setAddedToast(false), 2000);
-  };
+  const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
 
   const whatsappMessage = encodeURIComponent(
-    `Hello CareBridge, I am interested in ordering: ${product.name} (Price: ₹${product.price}). Please share details.`
+    `Hello CareBridge, I would like to enquire about: ${product.name} (Category: ${product.categoryLabel}, Required Qty: ${qty}). Please share details.`
   );
 
   const relatedProducts = getProductsByCategory(product.category)
@@ -101,15 +78,10 @@ function ProductView({ product }: { product: Product }) {
       <section className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
-            {/* Left: Product Image & Badges */}
+            {/* Left: Product Image & Trust Badges */}
             <div className="space-y-4">
               <div className="relative overflow-hidden rounded-3xl border border-gray-200 bg-[#faf9f6] p-4 shadow-sm">
-                {discountPercent > 0 && (
-                  <span className="absolute top-4 left-4 z-10 rounded-full bg-[#e63946] px-3.5 py-1 text-xs font-bold text-white shadow">
-                    SAVE {discountPercent}%
-                  </span>
-                )}
-                <span className="absolute top-4 right-4 z-10 rounded-full bg-[#0b4938] px-3.5 py-1 text-xs font-bold text-[#f4c542]">
+                <span className="absolute top-4 left-4 z-10 rounded-full bg-[#0b4938] px-3.5 py-1 text-xs font-bold text-[#f4c542]">
                   {product.categoryLabel}
                 </span>
 
@@ -127,30 +99,30 @@ function ProductView({ product }: { product: Product }) {
               <div className="grid grid-cols-3 gap-3">
                 <div className="flex flex-col items-center rounded-2xl bg-[#faf9f6] p-3 text-center border border-gray-100">
                   <ShieldCheck className="h-6 w-6 text-[#0b4938] mb-1" />
-                  <span className="text-xs font-bold text-[#173f35]">100% Authentic</span>
-                  <span className="text-[10px] text-gray-500">Verified Sourcing</span>
+                  <span className="text-xs font-bold text-[#173f35]">Verified Wholesale</span>
+                  <span className="text-[10px] text-gray-500">Trusted Sourcing</span>
                 </div>
                 <div className="flex flex-col items-center rounded-2xl bg-[#faf9f6] p-3 text-center border border-gray-100">
                   <Truck className="h-6 w-6 text-[#0b4938] mb-1" />
-                  <span className="text-xs font-bold text-[#173f35]">Fast Delivery</span>
+                  <span className="text-xs font-bold text-[#173f35]">Doorstep Delivery</span>
                   <span className="text-[10px] text-gray-500">Bengaluru & Surrounds</span>
                 </div>
                 <div className="flex flex-col items-center rounded-2xl bg-[#faf9f6] p-3 text-center border border-gray-100">
                   <HeartHandshake className="h-6 w-6 text-[#0b4938] mb-1" />
                   <span className="text-xs font-bold text-[#173f35]">Assisted Support</span>
-                  <span className="text-[10px] text-gray-500">Call or WhatsApp</span>
+                  <span className="text-[10px] text-gray-500">Personal Assistance</span>
                 </div>
               </div>
             </div>
 
-            {/* Right: Product Details & Purchase Actions */}
+            {/* Right: Product Details & Enquiry Actions (NO PRICE DISPLAYED) */}
             <div className="flex flex-col justify-between">
               <div>
                 <h1 className="text-2xl md:text-4xl font-extrabold text-[#173f35] leading-tight">
                   {product.name}
                 </h1>
 
-                {/* Rating & Stock */}
+                {/* Rating & Availability */}
                 <div className="mt-4 flex items-center gap-4 flex-wrap text-sm">
                   <div className="flex items-center gap-1.5 rounded-lg bg-amber-50 px-2.5 py-1 text-amber-800 border border-amber-200">
                     <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
@@ -159,33 +131,26 @@ function ProductView({ product }: { product: Product }) {
                   </div>
 
                   <span className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-50 px-3 py-1 font-semibold text-emerald-800 border border-emerald-200">
-                    <CheckCircle2 size={16} /> In Stock & Ready to Ship
+                    <CheckCircle2 size={16} /> Available on Enquiry
                   </span>
                 </div>
 
-                {/* Price block */}
+                {/* Enquiry Highlight Box (NO PRICING) */}
                 <div className="mt-6 rounded-2xl bg-[#faf9f6] p-5 border border-[#e8dfc5]">
-                  <div className="flex items-baseline gap-3">
-                    <span className="text-3xl md:text-4xl font-black text-[#173f35]">
-                      ₹{product.price.toLocaleString("en-IN")}
-                    </span>
-                    {product.mrp > product.price && (
-                      <span className="text-lg text-gray-400 line-through">
-                        ₹{product.mrp.toLocaleString("en-IN")}
-                      </span>
-                    )}
-                    {discountPercent > 0 && (
-                      <span className="text-xs font-bold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-md">
-                        You save ₹{(product.mrp - product.price).toLocaleString("en-IN")}
-                      </span>
-                    )}
+                  <div className="flex items-center gap-3">
+                    <MessageSquare className="h-6 w-6 text-[#0b4938] shrink-0" />
+                    <div>
+                      <h3 className="text-base font-bold text-[#173f35]">Wholesale & Custom Order Enquiry</h3>
+                      <p className="text-xs text-gray-600 mt-0.5">
+                        Submit an enquiry to receive availability details, custom wholesale quotes, and delivery timelines.
+                      </p>
+                    </div>
                   </div>
                   {product.unit && (
-                    <p className="mt-2 text-xs font-semibold text-gray-600">
-                      Package / Unit: <span className="text-[#0b4938]">{product.unit}</span>
+                    <p className="mt-3 text-xs font-semibold text-gray-600 pt-2 border-t border-gray-200/60">
+                      Standard Unit: <span className="text-[#0b4938]">{product.unit}</span>
                     </p>
                   )}
-                  <p className="mt-1 text-xs text-gray-500">Inclusive of all taxes. Free shipping on orders over ₹999.</p>
                 </div>
 
                 {/* Description */}
@@ -212,10 +177,10 @@ function ProductView({ product }: { product: Product }) {
                 )}
               </div>
 
-              {/* Quantity Selector & Action Buttons */}
+              {/* Quantity Selector & ENQUIRE NOW Action Buttons */}
               <div className="mt-8 pt-6 border-t border-gray-200 space-y-4">
                 <div className="flex items-center gap-4">
-                  <span className="text-sm font-bold text-[#173f35]">Quantity:</span>
+                  <span className="text-sm font-bold text-[#173f35]">Required Quantity:</span>
                   <div className="flex items-center rounded-xl border border-gray-300 bg-[#faf9f6]">
                     <button
                       onClick={() => setQty(Math.max(1, qty - 1))}
@@ -235,48 +200,24 @@ function ProductView({ product }: { product: Product }) {
                   </div>
                 </div>
 
+                {/* Primary CTA Buttons */}
                 <div className="grid gap-3 sm:grid-cols-2">
                   <button
-                    onClick={handleAddToCart}
-                    className={`flex items-center justify-center gap-2 rounded-xl py-3.5 px-6 font-bold text-white transition-all shadow-md ${
-                      addedToast
-                        ? "bg-emerald-700 scale-95"
-                        : "bg-[#0b4938] hover:bg-[#125c48] hover:shadow-lg"
-                    }`}
+                    onClick={() => setIsEnquiryModalOpen(true)}
+                    className="flex items-center justify-center gap-2 rounded-xl bg-[#0b4938] py-4 px-6 font-extrabold text-white transition hover:bg-[#125c48] shadow-lg text-sm"
                   >
-                    <ShoppingBag size={18} className="text-[#f4c542]" />
-                    {addedToast ? "Added to Cart!" : "Add to Cart"}
+                    <MessageSquare size={18} className="text-[#f4c542]" /> Enquire Now
                   </button>
 
-                  <Link
-                    href="/checkout"
-                    onClick={() => {
-                      add(
-                        {
-                          id: product.id,
-                          name: product.name,
-                          price: product.price,
-                          image: product.image,
-                          category: product.categoryLabel,
-                          unit: product.unit,
-                        },
-                        qty
-                      );
-                    }}
-                    className="flex items-center justify-center gap-2 rounded-xl bg-[#f4c542] py-3.5 px-6 font-extrabold text-[#12372c] transition hover:bg-[#e4b532] shadow-md"
+                  <a
+                    href={`https://wa.me/918904328298?text=${whatsappMessage}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-[#25D366] py-4 px-6 font-extrabold text-white transition hover:bg-emerald-600 shadow-lg text-sm"
                   >
-                    <Zap size={18} /> Buy Now
-                  </Link>
+                    <MessageCircle size={18} /> Enquire on WhatsApp
+                  </a>
                 </div>
-
-                <a
-                  href={`https://wa.me/918904328298?text=${whatsappMessage}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center justify-center gap-2 rounded-xl border-2 border-[#0b4938] bg-white py-3 px-6 font-bold text-[#0b4938] transition hover:bg-emerald-50 w-full"
-                >
-                  <MessageCircle size={18} className="text-emerald-600" /> Need Help? Enquire on WhatsApp
-                </a>
               </div>
             </div>
           </div>
@@ -303,6 +244,13 @@ function ProductView({ product }: { product: Product }) {
           )}
         </div>
       </section>
+
+      {/* Enquiry Modal */}
+      <EnquiryModal
+        product={product}
+        isOpen={isEnquiryModalOpen}
+        onClose={() => setIsEnquiryModalOpen(false)}
+      />
     </PageShell>
   );
 }
