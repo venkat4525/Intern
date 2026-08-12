@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import {
   ArrowRight,
   BadgeIndianRupee,
@@ -21,330 +24,280 @@ import {
   Stethoscope,
   Truck,
   Users,
+  Zap,
 } from "lucide-react";
 
 import PageShell from "@/components/PageShell";
+import ProductCard from "@/components/ProductCard";
+import { products, searchProducts } from "@/data/products";
 
 const categories = [
   {
     name: "Groceries",
-    description:
-      "Rice, pulses, oils, spices, dry fruits and everyday household essentials.",
+    description: "Rice, pulses, oils, spices, dry fruits and everyday household essentials.",
     href: "/groceries",
     icon: ShoppingBasket,
+    badge: "Wholesale Rates",
   },
   {
     name: "Medicines",
-    description:
-      "Prescription support, OTC products, vitamins and regular medicine needs.",
+    description: "Prescription support, OTC products, vitamins and regular medicine needs.",
     href: "/medicines",
     icon: Pill,
+    badge: "100% Genuine",
   },
   {
     name: "Medical Equipment",
-    description:
-      "HeartPulses, walkers, monitoring devices and recovery equipment.",
+    description: "BP Monitors, oximeters, glucometers, wheelchairs and recovery equipment.",
     href: "/medical-equipment",
     icon: Stethoscope,
+    badge: "Warranty Included",
   },
   {
-  name: "Equipment Rentals",
-  description:
-    "Hospital beds, oxygen concentrators, HeartPulses and patient-care rentals.",
-  href: "/rentals",
-  icon: PackageCheck,
-},
-  {
-    name: "Health & Wellness",
-    description:
-      "Nutrition, personal care, monitoring and recovery-support products.",
-    href: "/wellness",
-    icon: HeartPulse,
-  },
-  {
-    name: "Home Care",
-    description:
-      "Daily-living, hygiene, comfort and home-safety essentials.",
-    href: "/home-care",
-    icon: Home,
+    name: "Equipment Rentals",
+    description: "Hospital beds, oxygen concentrators, air mattresses and patient-care rentals.",
+    href: "/rentals",
+    icon: PackageCheck,
+    badge: "Monthly Terms",
   },
   {
     name: "Daily Pooja Essentials",
-    description:
-      "Camphor, cotton wicks, kumkum, turmeric, agarbatti and traditional items.",
+    description: "Bhimseni camphor, cotton wicks, kumkum, turmeric, agarbatti and traditional items.",
     href: "/pooja",
     icon: Sparkles,
+    badge: "Purity Assured",
   },
   {
     name: "Festival Care Boxes",
-    description:
-      "Complete festival and vratha essentials thoughtfully packed together.",
+    description: "Complete festival and vratha essentials thoughtfully packed together.",
     href: "/care-box",
     icon: PackageOpen,
+    badge: "21+ Items Pack",
+  },
+  {
+    name: "Health & Wellness",
+    description: "Nutrition, joint pain oils, monitoring and recovery-support products.",
+    href: "/wellness",
+    icon: HeartPulse,
+    badge: "Senior Special",
+  },
+  {
+    name: "Home Care",
+    description: "Adult diapers, anti-slip bath mats, daily-living and home-safety essentials.",
+    href: "/home-care",
+    icon: Home,
+    badge: "Hygiene Certified",
   },
 ];
 
 const advantages = [
   {
-    title: "Competitive Wholesale Pricing",
-    description:
-      "We source through trusted wholesale partners and pass dependable value on to customers.",
+    title: "Competitive Wholesale Sourcing",
+    description: "We work directly with verified wholesale dealers and authorized distributors, passing real value to families.",
     icon: BadgeIndianRupee,
   },
   {
-    title: "Trusted Supplier Network",
-    description:
-      "We work with reliable wholesale dealers, verified suppliers and authorized distributors.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Everything in One Place",
-    description:
-      "Groceries, medicines, equipment, wellness, pooja essentials and festival boxes.",
-    icon: PackageCheck,
-  },
-  {
     title: "Personal Ordering Assistance",
-    description:
-      "Customers can call or WhatsApp us and receive help from start to finish.",
+    description: "Call or WhatsApp our team for personalized guidance, recurring monthly orders, or urgent family requirements.",
     icon: HeartHandshake,
   },
   {
-    title: "Delivery to Loved Ones",
-    description:
-      "Arrange essential products for parents, relatives and family members from anywhere.",
+    title: "Everything In One Place",
+    description: "Groceries, medicines, medical equipment, rentals, daily pooja items and festival care boxes under one roof.",
+    icon: PackageCheck,
+  },
+  {
+    title: "Doorstep Delivery to Loved Ones",
+    description: "Arrange essential products and medical gear delivered straight to your parents' home in Bengaluru.",
     icon: Truck,
   },
-  {
-    title: "Care Beyond Shopping",
-    description:
-      "We focus on making family care simpler, more affordable and more dependable.",
-    icon: Users,
-  },
-];
-
-const festivalBoxes = [
-  {
-    name: "Ganesha Chaturthi Care Box",
-    description:
-      "Essential pooja materials for celebrating Ganesha Chaturthi with convenience and devotion.",
-  },
-  {
-    name: "Varalakshmi Vratham Care Box",
-    description:
-      "A thoughtfully assembled collection of traditional vratha and pooja essentials.",
-  },
-  {
-    name: "Deepavali Celebration Box",
-    description:
-      "Diyas, pooja essentials and festive items prepared for a joyful Deepavali celebration.",
-  },
-  {
-    name: "Navaratri Pooja Box",
-    description:
-      "Traditional essentials for Navaratri pooja, daily offerings and family celebrations.",
-  },
-  {
-    name: "Ugadi Essentials Box",
-    description:
-      "Celebrate the new year with carefully selected traditional and pooja essentials.",
-  },
-  {
-    name: "Satyanarayana Pooja Kit",
-    description:
-      "A convenient collection of commonly required items for Satyanarayana Pooja.",
-  },
-];
-
-const services = [
-  "Doctor Consultation",
-  "Home Nursing",
-  "Lab Tests",
-  "Physiotherapy",
-  "Ambulance Support",
-  "SOS Devices",
 ];
 
 export default function HomePage() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const featuredProducts = products.filter((p) => p.featured).slice(0, 8);
+  const searchResults = searchQuery.trim() ? searchProducts(searchQuery) : [];
+
   return (
     <PageShell>
       {/* Hero Section */}
       <section className="overflow-hidden bg-gradient-to-br from-[#062d23] via-[#0b4938] to-[#117153] text-white">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2 lg:py-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-16 md:px-8 md:py-20 lg:grid-cols-2 lg:py-24">
           <div>
-            <p className="font-semibold uppercase tracking-[0.2em] text-[#e2c98a]">
-              The CareBridge
-            </p>
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#e2c98a]/20 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#e2c98a] border border-[#e2c98a]/30">
+              <Sparkles size={14} /> The CareBridge Marketplace
+            </div>
 
-            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-tight md:text-6xl">
+            <h1 className="mt-4 max-w-3xl text-3xl font-extrabold leading-tight md:text-5xl lg:text-6xl">
               Everything your family needs, delivered with care
             </h1>
 
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80">
-              Quality products sourced from trusted wholesale partners at
-              competitive prices. From groceries and medicines to medical
-              equipment and festival essentials, CareBridge makes caring for
-              your loved ones simple, affordable and reliable.
+            <p className="mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-white/80">
+              Quality groceries, medicines, medical equipment, rentals, and daily pooja essentials sourced from trusted wholesale partners at competitive prices.
             </p>
+
+            {/* Quick Hero Search Input */}
+            <div className="mt-8 relative max-w-lg">
+              <div className="flex items-center rounded-2xl bg-white p-2 shadow-xl text-gray-800">
+                <Search size={22} className="ml-3 shrink-0 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search groceries, BP monitors, rice, oxygen..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-transparent px-3 py-2 text-sm md:text-base focus:outline-none text-gray-800 placeholder-gray-400"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery("")}
+                    className="mr-2 text-xs font-bold text-gray-400 hover:text-gray-600"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
+
+              {/* Search Results Dropdown Preview */}
+              {searchQuery.trim() !== "" && (
+                <div className="absolute top-full left-0 right-0 z-30 mt-2 max-h-80 overflow-y-auto rounded-2xl bg-white p-3 shadow-2xl border border-gray-200 text-gray-800">
+                  {searchResults.length > 0 ? (
+                    <div className="space-y-2">
+                      <p className="text-xs font-bold uppercase tracking-wider text-gray-400 px-2">
+                        Products Found ({searchResults.length})
+                      </p>
+                      {searchResults.map((item) => (
+                        <Link
+                          key={item.id}
+                          href={`/products/${item.id}`}
+                          className="flex items-center justify-between gap-3 rounded-xl p-2.5 hover:bg-[#faf9f6] transition"
+                        >
+                          <div className="flex items-center gap-3">
+                            <img src={item.image} alt={item.name} className="h-10 w-10 rounded-lg object-cover" />
+                            <div>
+                              <p className="text-sm font-bold text-[#173f35] line-clamp-1">{item.name}</p>
+                              <span className="text-xs text-gray-500">{item.categoryLabel}</span>
+                            </div>
+                          </div>
+                          <span className="text-sm font-extrabold text-[#0b4938]">₹{item.price}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="p-4 text-center text-sm text-gray-500">No products found matching "{searchQuery}"</p>
+                  )}
+                </div>
+              )}
+            </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/categories"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#e2c98a] px-6 py-3 font-semibold text-[#173f35] transition hover:bg-[#ead7a7]"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#e2c98a] px-6 py-3.5 font-extrabold text-[#173f35] transition hover:bg-[#ead7a7] shadow-lg"
               >
-                Explore Categories
-                <ArrowRight size={18} />
+                Explore All Products <ArrowRight size={18} />
               </Link>
 
-              <Link
-                href="/help-ordering"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/40 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+              <a
+                href="https://wa.me/918904328298"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/40 px-6 py-3.5 font-bold text-white transition hover:bg-white/10"
               >
-                <CircleHelp size={18} />
-                Get Ordering Help
-              </Link>
-            </div>
-
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {[
-                "Competitive wholesale pricing",
-                "Trusted supplier network",
-                "Personal ordering assistance",
-                "Everything in one place",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm font-semibold backdrop-blur"
-                >
-                  <CheckCircle2 size={18} className="text-[#e2c98a]" />
-                  {item}
-                </div>
-              ))}
+                <MessageCircle size={18} /> WhatsApp Support
+              </a>
             </div>
           </div>
 
+          {/* Right Hero Feature Card */}
           <div className="rounded-3xl border border-white/15 bg-white/10 p-5 shadow-2xl backdrop-blur md:p-7">
-            <div className="rounded-2xl bg-white p-5 text-[#173f35] md:p-6">
-              <div className="flex items-center gap-3 rounded-xl border border-gray-200 px-4 py-4">
-                <Search size={20} className="shrink-0 text-gray-400" />
-                <span className="text-sm text-gray-500 md:text-base">
-                  Search groceries, medicines, equipment and more
-                </span>
+            <div className="rounded-2xl bg-white p-6 text-[#173f35]">
+              <div className="flex items-center justify-between border-b border-gray-100 pb-4">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#b68d40]">Direct Assisted Order</span>
+                  <h3 className="text-lg font-bold text-[#173f35]">Not comfortable ordering online?</h3>
+                </div>
+                <HeartHandshake className="h-8 w-8 text-[#0b4938] shrink-0" />
               </div>
 
-              <p className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-[#b68d40]">
-                Popular Categories
+              <p className="mt-3 text-sm leading-relaxed text-gray-600">
+                Call or WhatsApp our dedicated support desk. Share your monthly grocery list or medical equipment requirement, and we will place the order for you.
               </p>
 
-              <div className="mt-4 grid grid-cols-2 gap-4">
-                {[
-                  { name: "Groceries", icon: ShoppingBasket },
-                  { name: "Medicines", icon: Pill },
-                  { name: "Equipment", icon: Stethoscope },
-                  { name: "Festival Boxes", icon: PackageOpen },
-                ].map((item) => {
-                  const Icon = item.icon;
-
-                  return (
-                    <div
-                      key={item.name}
-                      className="rounded-2xl bg-[#f4f7ef] p-4"
-                    >
-                      <Icon size={23} className="text-[#173f35]" />
-                      <p className="mt-3 text-sm font-semibold">{item.name}</p>
-                    </div>
-                  );
-                })}
+              <div className="mt-5 grid grid-cols-2 gap-3">
+                <a
+                  href="tel:+918904328298"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-[#0b4938] py-3 text-xs font-bold text-white transition hover:bg-[#125c48]"
+                >
+                  <Phone size={15} /> Call Desk
+                </a>
+                <a
+                  href="https://wa.me/918904328298"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-2 rounded-xl border border-[#0b4938] py-3 text-xs font-bold text-[#0b4938] transition hover:bg-[#f4f7ef]"
+                >
+                  <MessageCircle size={15} /> WhatsApp Us
+                </a>
               </div>
 
-              <div className="mt-5 rounded-2xl bg-[#f4ebdd] p-4">
-                <p className="font-semibold text-[#173f35]">
-                  Not comfortable ordering online?
-                </p>
-                <p className="mt-2 text-sm leading-6 text-gray-600">
-                  Call or WhatsApp our team and we will help place your order.
-                </p>
+              <div className="mt-4 rounded-xl bg-[#f4ebdd] p-3 text-xs font-semibold text-[#173f35] flex items-center gap-2">
+                <Clock3 size={16} className="text-[#b68d40] shrink-0" />
+                Support Available: 9 AM to 7 PM (Mon - Sat)
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose CareBridge */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <div className="text-center">
-            <p className="font-semibold uppercase tracking-[0.18em] text-[#b68d40]">
-              Why Choose CareBridge
-            </p>
-
-            <h2 className="mt-3 text-3xl font-bold text-[#173f35] md:text-4xl">
-              Better value, trusted quality and personal care
-            </h2>
-
-            <p className="mx-auto mt-4 max-w-3xl text-lg leading-8 text-gray-600">
-              We work with trusted wholesale dealers, verified suppliers and
-              authorized distributors to bring families quality essentials at
-              competitive prices.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {advantages.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <article
-                  key={item.title}
-                  className="rounded-3xl border border-gray-200 bg-[#faf9f6] p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <div className="flex h-13 w-13 items-center justify-center rounded-2xl bg-[#f4ebdd] text-[#173f35]">
-                    <Icon size={25} />
-                  </div>
-
-                  <h3 className="mt-5 text-xl font-bold text-[#173f35]">
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-3 leading-7 text-gray-600">
-                    {item.description}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Categories */}
+      {/* Featured Products Section (DYNAMIC PRODUCT CARDS) */}
       <section className="bg-[#faf9f6] py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end mb-10">
             <div>
-              <p className="font-semibold uppercase tracking-[0.18em] text-[#b68d40]">
-                CareBridge Marketplace
-              </p>
-
-              <h2 className="mt-3 text-3xl font-bold text-[#173f35] md:text-4xl">
-                Shop by Category
+              <span className="font-semibold uppercase tracking-[0.18em] text-[#b68d40] text-xs">
+                Handpicked Products
+              </span>
+              <h2 className="mt-1 text-3xl font-extrabold text-[#173f35] md:text-4xl">
+                Featured Family Care Products
               </h2>
-
-              <p className="mt-4 max-w-2xl text-lg leading-8 text-gray-600">
-                Find everyday essentials, healthcare products and traditional
-                requirements through one trusted platform.
+              <p className="mt-2 text-base text-gray-600">
+                Click any product card to view specifications, availability, and instant add-to-cart.
               </p>
             </div>
 
             <Link
               href="/categories"
-              className="inline-flex items-center gap-2 font-semibold text-[#173f35]"
+              className="inline-flex items-center gap-2 font-bold text-[#0b4938] hover:underline"
             >
-              View all categories
-              <ArrowRight size={17} />
+              View Full Catalog <ArrowRight size={17} />
             </Link>
           </div>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Interactive Product Grid */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Shop By Category */}
+      <section className="bg-white py-16 md:py-20 border-t border-gray-100">
+        <div className="mx-auto max-w-7xl px-5 md:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="font-semibold uppercase tracking-[0.18em] text-[#b68d40] text-xs">
+              Explore Everything
+            </span>
+            <h2 className="mt-1 text-3xl font-extrabold text-[#173f35] md:text-4xl">
+              Shop by Category
+            </h2>
+            <p className="mt-3 text-base text-gray-600">
+              Find everyday provisions, healthcare products, pooja supplies and festival boxes through one trusted platform.
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {categories.map((category) => {
               const Icon = category.icon;
 
@@ -352,26 +305,27 @@ export default function HomePage() {
                 <Link
                   key={category.name}
                   href={category.href}
-                  className="group rounded-3xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                  className="group relative rounded-3xl border border-gray-200 bg-[#faf9f6] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-white"
                 >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f4ebdd] text-[#173f35] transition group-hover:bg-[#173f35] group-hover:text-white">
-                    <Icon size={27} />
+                  <div className="flex items-center justify-between">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f4ebdd] text-[#173f35] transition group-hover:bg-[#0b4938] group-hover:text-white">
+                      <Icon size={26} />
+                    </div>
+                    <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-[#b68d40] border border-amber-200">
+                      {category.badge}
+                    </span>
                   </div>
 
                   <h3 className="mt-5 text-xl font-bold text-[#173f35]">
                     {category.name}
                   </h3>
 
-                  <p className="mt-3 min-h-[72px] text-sm leading-6 text-gray-600">
+                  <p className="mt-2 text-xs leading-relaxed text-gray-600 min-h-[40px]">
                     {category.description}
                   </p>
 
-                  <span className="mt-5 inline-flex items-center gap-2 font-semibold text-[#173f35]">
-                    Explore
-                    <ArrowRight
-                      size={16}
-                      className="transition group-hover:translate-x-1"
-                    />
+                  <span className="mt-4 inline-flex items-center gap-2 text-xs font-extrabold text-[#0b4938]">
+                    Explore Category <ArrowRight size={14} className="transition group-hover:translate-x-1" />
                   </span>
                 </Link>
               );
@@ -380,333 +334,74 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Assisted Ordering */}
-      <section className="bg-[#f4ebdd] py-16 md:py-20">
+      {/* Why Choose CareBridge */}
+      <section className="bg-[#f4ebdd]/60 py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <div className="grid items-center gap-10 rounded-3xl bg-white p-8 shadow-sm md:p-12 lg:grid-cols-2">
-            <div>
-              <p className="font-semibold uppercase tracking-[0.18em] text-[#b68d40]">
-                Personal Assistance
-              </p>
-
-              <h2 className="mt-3 text-3xl font-bold text-[#173f35] md:text-4xl">
-                Not comfortable ordering online?
-              </h2>
-
-              <p className="mt-5 text-lg leading-8 text-gray-600">
-                Call or WhatsApp the CareBridge team. We will help you place
-                orders for groceries, medicines, medical equipment, pooja
-                essentials, festival boxes and repeat monthly requirements.
-              </p>
-
-              <div className="mt-7 flex flex-wrap gap-4">
-                <Link
-                  href="/help-ordering"
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#173f35] px-6 py-3 font-semibold text-white transition hover:bg-[#245b4c]"
-                >
-                  <HeartHandshake size={18} />
-                  Get Ordering Help
-                </Link>
-
-                <a
-                  href="https://wa.me/918904328298"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl border border-[#173f35] px-6 py-3 font-semibold text-[#173f35] transition hover:bg-[#f4f7ef]"
-                >
-                  <MessageCircle size={18} />
-                  WhatsApp Us
-                </a>
-              </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              {[
-                {
-                  title: "Phone Ordering",
-                  description: "Speak directly with our support team.",
-                  icon: Phone,
-                },
-                {
-                  title: "WhatsApp Assistance",
-                  description: "Share your list quickly and conveniently.",
-                  icon: MessageCircle,
-                },
-                {
-                  title: "Order for Loved Ones",
-                  description: "Arrange essentials for family from anywhere.",
-                  icon: Users,
-                },
-                {
-                  title: "Repeat Monthly Orders",
-                  description: "Get help with recurring household requirements.",
-                  icon: Clock3,
-                },
-              ].map((item) => {
-                const Icon = item.icon;
-
-                return (
-                  <div
-                    key={item.title}
-                    className="rounded-2xl bg-[#f4f7ef] p-5"
-                  >
-                    <Icon size={24} className="text-[#173f35]" />
-                    <h3 className="mt-4 font-bold text-[#173f35]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-6 text-gray-600">
-                      {item.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <div className="text-center">
-            <p className="font-semibold uppercase tracking-[0.18em] text-[#b68d40]">
-              Simple Ordering
-            </p>
-
-            <h2 className="mt-3 text-3xl font-bold text-[#173f35] md:text-4xl">
-              How CareBridge works
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="font-semibold uppercase tracking-[0.18em] text-[#b68d40] text-xs">
+              The CareBridge Advantage
+            </span>
+            <h2 className="mt-1 text-3xl font-extrabold text-[#173f35] md:text-4xl">
+              Better value, trusted quality and personal care
             </h2>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                number: "01",
-                title: "Tell us what you need",
-                description:
-                  "Browse categories or contact us with your product list and requirements.",
-              },
-              {
-                number: "02",
-                title: "We source trusted products",
-                description:
-                  "Our team coordinates with reliable wholesale dealers and verified suppliers.",
-              },
-              {
-                number: "03",
-                title: "Receive your order",
-                description:
-                  "Your selected essentials are arranged and delivered with personal support.",
-              },
-            ].map((step) => (
-              <article
-                key={step.number}
-                className="rounded-3xl border border-gray-200 bg-[#faf9f6] p-7"
-              >
-                <span className="text-4xl font-bold text-[#d5bd80]">
-                  {step.number}
-                </span>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {advantages.map((item) => {
+              const Icon = item.icon;
 
-                <h3 className="mt-5 text-xl font-bold text-[#173f35]">
-                  {step.title}
-                </h3>
-
-                <p className="mt-3 leading-7 text-gray-600">
-                  {step.description}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Festival Boxes */}
-      <section className="bg-[#faf9f6] py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
-            <div>
-              <p className="font-semibold uppercase tracking-[0.18em] text-[#b68d40]">
-                Festival Care
-              </p>
-
-              <h2 className="mt-3 text-3xl font-bold text-[#173f35] md:text-4xl">
-                Festival Care Boxes
-              </h2>
-
-              <p className="mt-4 max-w-2xl text-lg leading-8 text-gray-600">
-                Thoughtfully assembled traditional essentials delivered to your
-                home or directly to your loved ones.
-              </p>
-            </div>
-
-            <Link
-              href="/care-box"
-              className="inline-flex items-center gap-2 font-semibold text-[#173f35]"
-            >
-              View all care boxes
-              <ArrowRight size={17} />
-            </Link>
-          </div>
-
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {festivalBoxes.map((box) => (
-              <article
-                key={box.name}
-                className="rounded-3xl border border-gray-200 bg-white p-7 shadow-sm"
-              >
-                <div className="flex h-13 w-13 items-center justify-center rounded-2xl bg-[#f4ebdd] text-[#173f35]">
-                  <PackageOpen size={25} />
-                </div>
-
-                <p className="mt-5 text-sm font-semibold uppercase tracking-[0.15em] text-[#b68d40]">
-                  Festival Box
-                </p>
-
-                <h3 className="mt-3 text-xl font-bold text-[#173f35]">
-                  {box.name}
-                </h3>
-
-                <p className="mt-3 leading-7 text-gray-600">
-                  {box.description}
-                </p>
-
-                <Link
-                  href="/care-box"
-                  className="mt-5 inline-flex items-center gap-2 font-semibold text-[#173f35]"
-                >
-                  Enquire Now
-                  <ArrowRight size={16} />
-                </Link>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Promise */}
-      <section className="bg-[#0b4938] py-16 text-white md:py-20">
-        <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.3fr_1fr]">
-            <div>
-              <p className="font-semibold uppercase tracking-[0.18em] text-[#e2c98a]">
-                Our Promise
-              </p>
-
-              <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-                Quality essentials at prices families can trust
-              </h2>
-
-              <p className="mt-5 max-w-3xl text-lg leading-8 text-white/80">
-                CareBridge combines wholesale sourcing, trusted suppliers,
-                personal ordering assistance and convenient delivery to provide
-                dependable value across everyday family-care requirements.
-              </p>
-            </div>
-
-            <div className="grid gap-3">
-              {[
-                "Trusted wholesale sourcing",
-                "Competitive and transparent value",
-                "Reliable supplier network",
-                "Personal ordering support",
-                "Convenient family delivery",
-              ].map((promise) => (
+              return (
                 <div
-                  key={promise}
-                  className="flex items-center gap-3 rounded-xl bg-white/10 px-4 py-4 font-medium"
+                  key={item.title}
+                  className="rounded-3xl border border-gray-200 bg-white p-7 shadow-sm transition hover:shadow-md"
                 >
-                  <CheckCircle2 size={19} className="text-[#e2c98a]" />
-                  {promise}
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f4ebdd] text-[#173f35]">
+                    <Icon size={24} />
+                  </div>
+
+                  <h3 className="mt-4 text-lg font-bold text-[#173f35]">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-2 text-xs leading-relaxed text-gray-600">
+                    {item.description}
+                  </p>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Coming Soon */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <div className="text-center">
-            <p className="font-semibold uppercase tracking-[0.18em] text-[#b68d40]">
-              Coming Soon
-            </p>
-
-            <h2 className="mt-3 text-3xl font-bold text-[#173f35] md:text-4xl">
-              More care services, one trusted platform
-            </h2>
-
-            <p className="mx-auto mt-4 max-w-3xl text-lg leading-8 text-gray-600">
-              We are working to expand CareBridge with healthcare, home-care
-              and emergency-support services.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <div
-                key={service}
-                className="flex items-center justify-between rounded-2xl border border-gray-200 bg-[#faf9f6] p-5"
-              >
-                <span className="font-semibold text-[#173f35]">{service}</span>
-                <span className="rounded-full bg-[#f4ebdd] px-3 py-1 text-xs font-semibold text-[#8a672f]">
-                  Coming Soon
-                </span>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Contact CTA */}
-      <section className="bg-[#f4ebdd] py-16">
-        <div className="mx-auto max-w-7xl px-5 md:px-8">
-          <div className="rounded-3xl bg-white p-8 text-center shadow-sm md:p-12">
-            <p className="font-semibold uppercase tracking-[0.18em] text-[#b68d40]">
-              Need Help?
-            </p>
+      <section className="bg-[#0b4938] py-16 text-white">
+        <div className="mx-auto max-w-7xl px-5 text-center md:px-8">
+          <span className="font-bold uppercase tracking-[0.18em] text-[#e2c98a] text-xs">
+            We Are Here To Help
+          </span>
+          <h2 className="mt-2 text-3xl font-extrabold md:text-4xl">
+            Let us help you arrange your family essentials
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-base text-white/80">
+            Contact the CareBridge team for groceries, medicines, medical equipment, festival boxes or custom family care orders.
+          </p>
 
-            <h2 className="mt-3 text-3xl font-bold text-[#173f35] md:text-4xl">
-              Let us help you place your order
-            </h2>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <a
+              href="tel:+918904328298"
+              className="inline-flex items-center gap-2 rounded-xl bg-[#e2c98a] px-6 py-3.5 font-extrabold text-[#173f35] transition hover:bg-[#ead7a7]"
+            >
+              <Phone size={18} /> Call +91 89043 28298
+            </a>
 
-            <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-gray-600">
-              Contact the CareBridge team for groceries, medicines, equipment,
-              festival boxes or any special family-care requirement.
-            </p>
-
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <a
-                href="tel:+918904328298"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#173f35] px-6 py-3 font-semibold text-white"
-              >
-                <Phone size={18} />
-                Call Us
-              </a>
-
-              <a
-                href="https://wa.me/918904328298"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-[#173f35] px-6 py-3 font-semibold text-[#173f35]"
-              >
-                <MessageCircle size={18} />
-                WhatsApp Us
-              </a>
-
-              <a
-                href="mailto:care@thecarebridge.co.in"
-                className="inline-flex items-center gap-2 rounded-xl border border-gray-300 px-6 py-3 font-semibold text-[#173f35]"
-              >
-                <Mail size={18} />
-                Email Us
-              </a>
-            </div>
-
-            <div className="mt-7 inline-flex items-center gap-2 text-sm font-medium text-gray-600">
-              <Clock3 size={17} />
-              Ordering assistance available from 9 AM to 7 PM
-            </div>
+            <a
+              href="https://wa.me/918904328298"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/40 px-6 py-3.5 font-bold text-white transition hover:bg-white/10"
+            >
+              <MessageCircle size={18} /> WhatsApp Assistance
+            </a>
           </div>
         </div>
       </section>

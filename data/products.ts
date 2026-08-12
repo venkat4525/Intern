@@ -1,0 +1,483 @@
+export interface Product {
+  id: string;
+  name: string;
+  category: "groceries" | "medicines" | "medical-equipment" | "rentals" | "pooja" | "care-box" | "wellness" | "home-care";
+  categoryLabel: string;
+  price: number;
+  mrp: number;
+  rating: number;
+  reviewsCount: number;
+  image: string;
+  description: string;
+  specifications: string[];
+  inStock: boolean;
+  featured?: boolean;
+  enquiryType?: "purchase" | "rental";
+  unit?: string;
+}
+
+export const products: Product[] = [
+  // --- MEDICAL EQUIPMENT ---
+  {
+    id: "bp-monitor-digital",
+    name: "Omron Automatic Digital BP Monitor",
+    category: "medical-equipment",
+    categoryLabel: "Medical Equipment",
+    price: 1849,
+    mrp: 2490,
+    rating: 4.8,
+    reviewsCount: 142,
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80",
+    description: "Fully automatic blood pressure monitor with Intellisense technology for accurate, comfortable readings at home.",
+    specifications: [
+      "Intellisense Technology for painless inflation",
+      "Memory storage for 60 readings",
+      "Cuff wrapping guide indicator",
+      "Hypertension color indicator",
+      "3-year warranty included"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "1 Unit"
+  },
+  {
+    id: "fingertip-oximeter",
+    name: "Dr. Trust Professional Fingertip Pulse Oximeter",
+    category: "medical-equipment",
+    categoryLabel: "Medical Equipment",
+    price: 899,
+    mrp: 1499,
+    rating: 4.7,
+    reviewsCount: 98,
+    image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&w=600&q=80",
+    description: "Accurately measures oxygen saturation (SpO2) and pulse rate in seconds with a bright OLED display.",
+    specifications: [
+      "OLED display with dual color view",
+      "Measures SpO2, Pulse Rate & Perfusion Index",
+      "Auto power off after 8 seconds",
+      "Water-resistant IP22 rating"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "1 Unit"
+  },
+  {
+    id: "mesh-nebulizer-portable",
+    name: "Handheld Mesh Portable Nebulizer Machine",
+    category: "medical-equipment",
+    categoryLabel: "Medical Equipment",
+    price: 1499,
+    mrp: 2200,
+    rating: 4.6,
+    reviewsCount: 64,
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80",
+    description: "Ultra-quiet handheld nebulizer for adults and children, suitable for respiratory therapy at home or while traveling.",
+    specifications: [
+      "Vaporization rate ≥ 0.2 ml/min",
+      "Low noise < 25 dB operation",
+      "Dual mask set (Adult & Child masks)",
+      "USB rechargeable battery"
+    ],
+    inStock: true,
+    enquiryType: "purchase",
+    unit: "1 Kit"
+  },
+  {
+    id: "glucometer-kit",
+    name: "Accu-Chek Active Blood Glucose Monitor Kit",
+    category: "medical-equipment",
+    categoryLabel: "Medical Equipment",
+    price: 1199,
+    mrp: 1599,
+    rating: 4.9,
+    reviewsCount: 215,
+    image: "https://images.unsplash.com/photo-1628771065518-0d82f1938462?auto=format&fit=crop&w=600&q=80",
+    description: "Fast 5-second blood glucose monitoring kit with 10 free test strips and lancing device.",
+    specifications: [
+      "Test time: 5 seconds",
+      "Sample volume: 1-2 μl blood",
+      "500 test memory with date and time",
+      "Pre and post meal markers"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "1 Kit (with 10 Strips)"
+  },
+  {
+    id: "foldable-wheelchair-premium",
+    name: "Ergonomic Lightweight Foldable Wheelchair",
+    category: "medical-equipment",
+    categoryLabel: "Mobility Support",
+    price: 5499,
+    mrp: 7500,
+    rating: 4.8,
+    reviewsCount: 53,
+    image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80",
+    description: "Heavy-duty powder coated steel foldable wheelchair with comfortable padded seat and attendant brakes.",
+    specifications: [
+      "Foldable frame for compact transport",
+      "Weight capacity up to 110 kg",
+      "Dual braking system (User & Attendant)",
+      "Detachable leg rests"
+    ],
+    inStock: true,
+    enquiryType: "purchase",
+    unit: "1 Unit"
+  },
+  {
+    id: "aluminum-walker-foldable",
+    name: "Height Adjustable Aluminum Folding Walker",
+    category: "medical-equipment",
+    categoryLabel: "Mobility Support",
+    price: 1299,
+    mrp: 1800,
+    rating: 4.7,
+    reviewsCount: 76,
+    image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&w=600&q=80",
+    description: "Lightweight anodized aluminum walking frame with single-button folding mechanism and non-slip rubber tips.",
+    specifications: [
+      "Reciprocal walking frame feature",
+      "Height adjustable from 30 to 37 inches",
+      "Weight capacity up to 100 kg",
+      "Soft foam hand grips"
+    ],
+    inStock: true,
+    enquiryType: "purchase",
+    unit: "1 Unit"
+  },
+
+  // --- RENTALS ---
+  {
+    id: "hospital-bed-rental-motorized",
+    name: "3-Function Motorized ICU Hospital Bed (Rental)",
+    category: "rentals",
+    categoryLabel: "Equipment Rental",
+    price: 3499,
+    mrp: 4500,
+    rating: 4.9,
+    reviewsCount: 38,
+    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=600&q=80",
+    description: "Full motorized patient care hospital bed with backrest, knee-rest, and height adjustment remote controls for home recovery.",
+    specifications: [
+      "Remote controlled 3-function adjustments",
+      "Collapsible side rails for patient safety",
+      "High density waterproof mattress included",
+      "Free doorstep installation in Bengaluru",
+      "Monthly rental terms"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "rental",
+    unit: "1 Month Rental"
+  },
+  {
+    id: "oxygen-concentrator-10l-rental",
+    name: "Philips 10L Medical Oxygen Concentrator (Rental)",
+    category: "rentals",
+    categoryLabel: "Equipment Rental",
+    price: 4999,
+    mrp: 6500,
+    rating: 4.9,
+    reviewsCount: 44,
+    image: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1cdb?auto=format&fit=crop&w=600&q=80",
+    description: "Continuous flow medical-grade 10 Liter oxygen concentrator with purity indicator and low sound profile.",
+    specifications: [
+      "Flow rate: 0.5 to 10 Liters per minute",
+      "Oxygen purity: 93% ± 3%",
+      "Built-in oxygen purity monitor & alarms",
+      "24/7 continuous operation design"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "rental",
+    unit: "1 Month Rental"
+  },
+  {
+    id: "pressure-relief-air-mattress-rental",
+    name: "Anti-Bedsore Air Mattress with Motor Pump",
+    category: "rentals",
+    categoryLabel: "Equipment Rental",
+    price: 699,
+    mrp: 1200,
+    rating: 4.7,
+    reviewsCount: 29,
+    image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80",
+    description: "Alternating pressure bubble air mattress system designed to prevent and relieve bedsores for bedridden patients.",
+    specifications: [
+      "Variable pressure pump knob",
+      "Air cycle duration: 6 minutes",
+      "Medical grade PVC material",
+      "Ultra-quiet automatic pump"
+    ],
+    inStock: true,
+    enquiryType: "rental",
+    unit: "1 Month Rental"
+  },
+
+  // --- GROCERIES ---
+  {
+    id: "sona-masoori-rice-25kg",
+    name: "Royal Sona Masoori Raw Rice (25 kg Bag)",
+    category: "groceries",
+    categoryLabel: "Groceries",
+    price: 1399,
+    mrp: 1650,
+    rating: 4.8,
+    reviewsCount: 310,
+    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
+    description: "Aromatic, lightweight, premium aged Sona Masoori rice sourced directly from Karnataka farms.",
+    specifications: [
+      "100% pure aged raw rice",
+      "Pesticide-tested quality grain",
+      "Ideal for daily consumption",
+      "Net Weight: 25 kg"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "25 kg Bag"
+  },
+  {
+    id: "toor-dal-premium-5kg",
+    name: "Organic Unpolished Toor Dal / Arhar Dal (5 kg)",
+    category: "groceries",
+    categoryLabel: "Groceries",
+    price: 749,
+    mrp: 899,
+    rating: 4.9,
+    reviewsCount: 185,
+    image: "https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?auto=format&fit=crop&w=600&q=80",
+    description: "High-protein, unpolished Desi Toor Dal without synthetic chemical processing for delicious, healthy sambar and dal.",
+    specifications: [
+      "Unpolished & natural protein rich",
+      "Easy to cook with rich aroma",
+      "Zero added colors or chemical polishing",
+      "Net Weight: 5 kg"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "5 kg Pack"
+  },
+  {
+    id: "cold-pressed-groundnut-oil-5l",
+    name: "Traditional Wood Pressed Groundnut Oil (5 Liters)",
+    category: "groceries",
+    categoryLabel: "Groceries",
+    price: 1199,
+    mrp: 1450,
+    rating: 4.9,
+    reviewsCount: 128,
+    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80",
+    description: "Pure cold-pressed peanut oil extracted using wooden Chekku method. Zero chemicals, preservatives or refining.",
+    specifications: [
+      "100% natural wood pressed (Mara Chekku)",
+      "Heart-friendly MUFA rich oil",
+      "High smoke point ideal for Indian cooking",
+      "5 Liter tin container"
+    ],
+    inStock: true,
+    enquiryType: "purchase",
+    unit: "5 Liter Tin"
+  },
+  {
+    id: "dry-fruits-assorted-pack",
+    name: "Premium Royal Dry Fruits Combo (1 kg)",
+    category: "groceries",
+    categoryLabel: "Groceries",
+    price: 1099,
+    mrp: 1499,
+    rating: 4.8,
+    reviewsCount: 92,
+    image: "https://images.unsplash.com/photo-1596560548464-f010549b84d7?auto=format&fit=crop&w=600&q=80",
+    description: "Nutritious mix of California Almonds, Jumbo Cashews, Afghan Raisins, and Iranian Pistachios.",
+    specifications: [
+      "250g Almonds + 250g Cashews + 250g Raisins + 250g Pistachios",
+      "Vacuum sealed for crunch & freshness",
+      "100% natural without preservatives"
+    ],
+    inStock: true,
+    enquiryType: "purchase",
+    unit: "1 kg Pack"
+  },
+
+  // --- MEDICINES & WELLNESS ---
+  {
+    id: "multivitamin-senior-care",
+    name: "Multivitamin & Mineral Supplement for Seniors (60 Tabs)",
+    category: "medicines",
+    categoryLabel: "Medicines & Supplements",
+    price: 549,
+    mrp: 799,
+    rating: 4.7,
+    reviewsCount: 88,
+    image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&w=600&q=80",
+    description: "Specially formulated daily essential vitamins, Vitamin D3, B12, Calcium, and Zinc tailored for adults aged 50+.",
+    specifications: [
+      "23 essential nutrients for immunity & joint strength",
+      "Supports bone density and memory focus",
+      "Vegetarian coated easy-swallow tablets",
+      "60 Tablets (2 months supply)"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "Bottle of 60 Tabs"
+  },
+  {
+    id: "joint-pain-oil-ayurvedic",
+    name: "Ayurvedic Pain Relief Ortho Oil (200 ml)",
+    category: "wellness",
+    categoryLabel: "Health & Wellness",
+    price: 349,
+    mrp: 499,
+    rating: 4.8,
+    reviewsCount: 167,
+    image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80",
+    description: "Fast-acting herbal oil infusion with Mahanarayan oil and Eucalyptus for joint, knee, and muscular pain relief.",
+    specifications: [
+      "Contains 100% pure Ayurvedic extracts",
+      "Deep penetrating warmth for stiffness relief",
+      "Non-sticky quick absorption",
+      "Net Volume: 200 ml"
+    ],
+    inStock: true,
+    enquiryType: "purchase",
+    unit: "200 ml Bottle"
+  },
+
+  // --- POOJA & FESTIVAL CARE BOXES ---
+  {
+    id: "pooja-camphor-pure-bhimseni",
+    name: "Pure Bhimseni Camphor for Daily Pooja (250g)",
+    category: "pooja",
+    categoryLabel: "Daily Pooja Essentials",
+    price: 299,
+    mrp: 450,
+    rating: 4.9,
+    reviewsCount: 204,
+    image: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80",
+    description: "100% natural edible-grade Bhimseni Camphor flakes with long-lasting divine aroma and zero toxic residue.",
+    specifications: [
+      "100% pure natural pine tree extract",
+      "Leaves zero ash or black residue",
+      "Calming aromatherapy & spiritual purity",
+      "Airtight jar packaging"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "250g Jar"
+  },
+  {
+    id: "ganesha-chaturthi-care-box",
+    name: "Ganesha Chaturthi Complete Pooja Care Box",
+    category: "care-box",
+    categoryLabel: "Festival Care Boxes",
+    price: 1499,
+    mrp: 1999,
+    rating: 5.0,
+    reviewsCount: 78,
+    image: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80",
+    description: "Thoughtfully assembled festival pack containing all required 21 items for traditional Ganesha Pooja.",
+    specifications: [
+      "Includes Pure Camphor, Kumkum, Turmeric, Cotton Wicks, Sacred Thread",
+      "Incense sticks (Agarbatti), Pooja Oil, Brass Lamp accessories",
+      "Eco-friendly clay idol guidance checklist",
+      "Doorstep delivery for family & parents"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "Complete Box"
+  },
+  {
+    id: "varalakshmi-vratham-care-box",
+    name: "Varalakshmi Vratham Sacred Care Box",
+    category: "care-box",
+    categoryLabel: "Festival Care Boxes",
+    price: 1299,
+    mrp: 1750,
+    rating: 4.9,
+    reviewsCount: 65,
+    image: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80",
+    description: "Curated collection of traditional vratha essentials, Kalasha accessories, sacred threads, and pooja offerings.",
+    specifications: [
+      "Kalasha decoration items & Sacred Threads",
+      "Natural Kumkum, Turmeric, Chandan paste",
+      "Traditional brass lamps wicks & Pooja oil",
+      "Step-by-step vratha ritual checklist included"
+    ],
+    inStock: true,
+    enquiryType: "purchase",
+    unit: "Complete Box"
+  },
+
+  // --- HOME CARE ---
+  {
+    id: "adult-diapers-tape-style-l",
+    name: "Friends Classic Adult Diapers (Large - 10 Count)",
+    category: "home-care",
+    categoryLabel: "Home Care & Hygiene",
+    price: 599,
+    mrp: 750,
+    rating: 4.8,
+    reviewsCount: 156,
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80",
+    description: "High absorbency leak-proof tape style adult diapers for maximum comfort, dignity, and overnight protection.",
+    specifications: [
+      "Up to 8-10 hours leakage protection",
+      "Wetness indicator strip",
+      "Anti-bacterial absorbent core",
+      "Waist size: 38 - 54 inches (Large)"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "Pack of 10"
+  },
+  {
+    id: "anti-slip-bathroom-mat",
+    name: "Safety Anti-Slip Bathroom Rubber Suction Mat",
+    category: "home-care",
+    categoryLabel: "Home Care & Safety",
+    price: 499,
+    mrp: 699,
+    rating: 4.7,
+    reviewsCount: 112,
+    image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80",
+    description: "Extra long non-slip suction bath mat designed to prevent slips and falls for seniors in wet bathrooms.",
+    specifications: [
+      "Hundreds of high-strength bottom suction cups",
+      "Drainage holes prevent water pooling",
+      "Mildew resistant BPA-free material",
+      "Dimensions: 100 cm x 40 cm"
+    ],
+    inStock: true,
+    enquiryType: "purchase",
+    unit: "1 Mat"
+  }
+];
+
+export function getProductById(id: string): Product | undefined {
+  return products.find((p) => p.id === id);
+}
+
+export function getProductsByCategory(category: string): Product[] {
+  if (!category || category === "all") return products;
+  return products.filter((p) => p.category === category);
+}
+
+export function searchProducts(query: string): Product[] {
+  const q = query.toLowerCase().trim();
+  if (!q) return products;
+  return products.filter(
+    (p) =>
+      p.name.toLowerCase().includes(q) ||
+      p.description.toLowerCase().includes(q) ||
+      p.categoryLabel.toLowerCase().includes(q)
+  );
+}

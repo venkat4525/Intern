@@ -1,3 +1,21 @@
-import type { Metadata } from "next";import "./globals.css";
-export const metadata: Metadata={title:"CareBridge | Family Care Marketplace",description:"Groceries, medicines, medical equipment, pooja essentials and festival care boxes for families."};
-export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body>{children}</body></html>}
+import type { Metadata } from "next";
+import "./globals.css";
+import ClientProviders from "../components/ClientProviders";
+
+export const metadata: Metadata = {
+  title: "CareBridge | Family Care Marketplace & Equipment",
+  description: "Quality groceries, medicines, medical equipment, rentals, pooja essentials and festival care boxes delivered with personal assistance."
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
+      </head>
+      <body>
+        <ClientProviders>{children}</ClientProviders>
+      </body>
+    </html>
+  );
+}

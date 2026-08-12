@@ -1,1 +1,13 @@
-import SectionPage from "@/components/SectionPage";export default function Page(){return <SectionPage eyebrow="Comfort at home" title="Home Care Essentials" intro="Daily living, hygiene and comfort products that make home care more manageable." items={["Adult Hygiene","Bed Protection","Bath Safety","Comfort Supports","Daily Living Aids","Home Safety","Incontinence Care","Patient Room Essentials"]}/>}
+import SectionPage from "@/components/SectionPage";
+
+export default function HomeCarePage() {
+  return (
+    <SectionPage
+      eyebrow="Safety & Hygiene Support"
+      title="Home Care & Hygiene"
+      intro="Adult diapers, anti-slip bathroom mats, daily-living aids, comfort pillows, and safety essentials for elderly care."
+      categorySlug="home-care"
+      subGroups={["Adult Incontinence", "Bathroom Safety", "Comfort & Sleep", "Disinfection & Cleanliness"]}
+    />
+  );
+}

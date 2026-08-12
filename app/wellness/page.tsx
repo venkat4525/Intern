@@ -1,2 +1,13 @@
-import PageShell from "@/components/PageShell";import { Heart,MessageCircle,PhoneCall,Users } from "lucide-react";
-export default function Wellness(){return <PageShell><section className="bg-[#003F2E] px-5 py-16 text-center text-white"><h1 className="text-5xl font-bold">Health & Wellness Support</h1><p className="mx-auto mt-5 max-w-3xl text-xl text-white/80">Care goes beyond delivery. Support may be arranged based on need, availability and location.</p></section><section className="mx-auto max-w-6xl px-5 py-16 md:px-8"><div className="grid gap-6 md:grid-cols-2">{[[Users,"Wellness Visits","Periodic general well-being visits when requested."],[PhoneCall,"Friendly Phone Check-ins","Regular conversations that provide companionship."],[Heart,"Emotional Well-being Support","Compassionate conversations to help reduce loneliness."],[MessageCircle,"Family Updates","General updates shared with the care recipient's consent."]].map(([I,t,d])=>{const Icon=I as React.ElementType;return <div key={t as string} className="rounded-3xl bg-white p-7"><Icon className="text-[#76B82A]" size={38}/><h2 className="mt-4 text-2xl font-bold">{t as string}</h2><p className="mt-2 text-gray-600">{d as string}</p></div>})}</div><p className="mt-8 text-sm text-gray-500">* Services are arranged based on individual needs, consent, availability and location.</p></section></PageShell>}
+import SectionPage from "@/components/SectionPage";
+
+export default function WellnessPage() {
+  return (
+    <SectionPage
+      eyebrow="Everyday Health & Wellbeing"
+      title="Health & Wellness"
+      intro="Nutrition, joint pain relief oils, personal care, monitoring devices, and recovery-support products for your family."
+      categorySlug="wellness"
+      subGroups={["Pain Relief", "Nutritional Drinks", "Senior Wellness", "Personal Hygiene"]}
+    />
+  );
+}

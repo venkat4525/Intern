@@ -1,2 +1,75 @@
-import Image from "next/image";import Link from "next/link";import { Mail,MapPin,Phone } from "lucide-react";
-export default function Footer(){return <footer className="bg-[#062d23] text-white"><div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-4 md:px-8"><div><Image src="/carebridge-logo.png" alt="CareBridge" width={220} height={120} className="h-24 w-auto rounded-xl object-contain"/><p className="mt-4 leading-7 text-white/75">A family-care marketplace for everyday essentials, equipment, tradition and assisted ordering.</p></div><div><h3 className="text-xl font-bold text-[#f4c542]">Categories</h3><div className="mt-4 flex flex-col gap-3 text-white/80"><Link href="/groceries">Groceries</Link><Link href="/medicines">Medicines</Link><Link href="/medical-equipment">Medical Equipment</Link><Link href="/pooja">Pooja Essentials</Link></div></div><div><h3 className="text-xl font-bold text-[#f4c542]">Explore</h3><div className="mt-4 flex flex-col gap-3 text-white/80"><Link href="/care-box">Festival Care Boxes</Link><Link href="/rentals">Equipment Rentals</Link><Link href="/services">Services</Link><Link href="/about">About</Link><Link href="/contact">Contact</Link></div></div><div><h3 className="text-xl font-bold text-[#f4c542]">Contact</h3><div className="mt-4 space-y-3 text-white/80"><p className="flex gap-2"><Phone size={18}/>+91 89043 28298</p><p className="flex gap-2"><Mail size={18}/>Pooja.raghavendra@gmail.com</p><p className="flex gap-2"><MapPin size={18}/>Bengaluru, Karnataka</p></div></div></div><div className="border-t border-white/10 py-5 text-center text-sm text-white/60">© {new Date().getFullYear()} CareBridge. All rights reserved.</div></footer>}
+import Image from "next/image";
+import Link from "next/link";
+import { Mail, MapPin, Phone, ShieldCheck, ShoppingBag, Truck, UserCheck } from "lucide-react";
+
+export default function Footer() {
+  return (
+    <footer className="bg-[#062d23] text-white border-t border-white/10">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-4 md:px-8">
+        <div>
+          <Image
+            src="/carebridge-logo.png"
+            alt="CareBridge"
+            width={220}
+            height={120}
+            className="h-20 w-auto rounded-xl object-contain bg-white/10 p-2"
+          />
+          <p className="mt-4 text-sm leading-6 text-white/75">
+            CareBridge is a dedicated family-care marketplace providing wholesale pricing on groceries, medicines, medical equipment, rentals, and pooja care boxes with assisted ordering.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-bold text-[#f4c542]">Shop Categories</h3>
+          <div className="mt-4 flex flex-col gap-2.5 text-sm text-white/80">
+            <Link href="/groceries" className="hover:text-white transition">Groceries & Pantry</Link>
+            <Link href="/medicines" className="hover:text-white transition">Medicines & Supplements</Link>
+            <Link href="/medical-equipment" className="hover:text-white transition">Medical Devices & Equipment</Link>
+            <Link href="/rentals" className="hover:text-white transition">Equipment Rentals</Link>
+            <Link href="/pooja" className="hover:text-white transition">Daily Pooja Essentials</Link>
+            <Link href="/care-box" className="hover:text-white transition">Festival Care Boxes</Link>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-bold text-[#f4c542]">Quick Links & Tools</h3>
+          <div className="mt-4 flex flex-col gap-2.5 text-sm text-white/80">
+            <Link href="/cart" className="hover:text-white transition flex items-center gap-1.5">
+              <ShoppingBag size={15} className="text-[#f4c542]" /> Shopping Cart
+            </Link>
+            <Link href="/orders" className="hover:text-white transition flex items-center gap-1.5">
+              <Truck size={15} className="text-[#f4c542]" /> Track Your Orders
+            </Link>
+            <Link href="/admin" className="hover:text-white transition flex items-center gap-1.5">
+              <UserCheck size={15} className="text-[#f4c542]" /> Admin Dashboard
+            </Link>
+            <Link href="/about" className="hover:text-white transition">About CareBridge</Link>
+            <Link href="/contact" className="hover:text-white transition">Contact Support</Link>
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-lg font-bold text-[#f4c542]">Contact & Delivery</h3>
+          <div className="mt-4 space-y-3 text-sm text-white/80">
+            <p className="flex items-center gap-2">
+              <Phone size={16} className="text-[#f4c542]" /> +91 89043 28298
+            </p>
+            <p className="flex items-center gap-2">
+              <Mail size={16} className="text-[#f4c542]" /> care@thecarebridge.co.in
+            </p>
+            <p className="flex items-center gap-2">
+              <MapPin size={16} className="text-[#f4c542]" /> Bengaluru, Karnataka, India
+            </p>
+            <div className="pt-2 text-xs text-emerald-300 flex items-center gap-1">
+              <ShieldCheck size={16} /> 100% Verified Wholesale Partners
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="border-t border-white/10 py-5 text-center text-xs text-white/60">
+        © {new Date().getFullYear()} CareBridge Family Care Marketplace. All rights reserved. Built with Razorpay Secure Payments.
+      </div>
+    </footer>
+  );
+}
