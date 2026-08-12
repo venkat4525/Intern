@@ -22,7 +22,8 @@ import {
   Sun,
   Home,
   Gift,
-  ArrowRight
+  ArrowRight,
+  User
 } from "lucide-react";
 
 const categoryMenuItems = [
@@ -93,6 +94,14 @@ export default function Header() {
             >
               <Truck size={13} className="text-[#f4c542]" />
               <span>Track Orders</span>
+            </Link>
+            <span className="text-white/30">|</span>
+            <Link
+              href="/login"
+              className="flex items-center gap-1.5 transition hover:text-[#f4c542]"
+            >
+              <User size={13} className="text-[#f4c542]" />
+              <span>Login / Sign Up</span>
             </Link>
             <span className="text-white/30">|</span>
             <Link
@@ -310,6 +319,15 @@ export default function Header() {
               <span>Call Us</span>
             </a>
 
+            {/* Login Account Button */}
+            <Link
+              href="/login"
+              className="hidden sm:flex items-center gap-1.5 rounded-xl bg-white/15 px-3 py-2 text-xs font-bold text-white transition hover:bg-white/25 border border-white/20"
+            >
+              <User size={15} className="text-[#f4c542]" />
+              <span>Log In</span>
+            </Link>
+
             {/* Enquiry Desk Button */}
             <a
               href="https://wa.me/918904328298"
@@ -433,6 +451,14 @@ export default function Header() {
 
               <div className="flex flex-col gap-2.5">
                 <Link
+                  href="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2.5 text-xs text-white font-bold"
+                >
+                  <User size={16} className="text-[#f4c542]" /> User Login / Sign Up
+                </Link>
+
+                <Link
                   href="/orders"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2.5 text-xs text-[#f4c542] font-bold"
@@ -443,7 +469,7 @@ export default function Header() {
                 <Link
                   href="/admin"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2.5 text-xs text-emerald-300 font-bold"
+                  className="flex items-center gap-2 rounded-xl bg-[#0b4938] px-4 py-2.5 text-xs text-emerald-300 font-bold border border-emerald-800"
                 >
                   <UserCheck size={16} /> Admin Portal
                 </Link>
