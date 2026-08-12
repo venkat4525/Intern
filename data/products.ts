@@ -159,7 +159,7 @@ export const products: Product[] = [
     mrp: 1650,
     rating: 4.8,
     reviewsCount: 310,
-    image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=600&q=80",
+    image: "/images/sona-masoori-rice.png",
     description: "Aromatic, lightweight, premium aged Sona Masoori rice sourced directly from Karnataka farms.",
     specifications: [
       "100% pure aged raw rice",
@@ -181,7 +181,7 @@ export const products: Product[] = [
     mrp: 899,
     rating: 4.9,
     reviewsCount: 185,
-    image: "https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?auto=format&fit=crop&w=600&q=80",
+    image: "/images/toor-dal.png",
     description: "High-protein, unpolished Desi Toor Dal without synthetic chemical processing for delicious, healthy sambar and dal.",
     specifications: [
       "Unpolished & natural protein rich",
@@ -193,6 +193,28 @@ export const products: Product[] = [
     featured: true,
     enquiryType: "purchase",
     unit: "5 kg Pack"
+  },
+  {
+    id: "fresh-veggies-fruits-basket",
+    name: "Fresh Organic Farm Vegetables & Fruits Basket",
+    category: "groceries",
+    categoryLabel: "Groceries & Fresh Produce",
+    price: 699,
+    mrp: 899,
+    rating: 4.9,
+    reviewsCount: 145,
+    image: "/images/fresh-veggies-fruits.png",
+    description: "Hand-picked farm fresh seasonal vegetables and fruits delivered directly to your doorstep in Bengaluru.",
+    specifications: [
+      "Includes tomatoes, carrots, spinach, bell peppers, apples & oranges",
+      "100% farm fresh & washed produce",
+      "Chemical-free organic sourcing",
+      "Daily doorstep delivery available"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "Weekly Family Basket"
   },
   {
     id: "cold-pressed-groundnut-oil-5l",

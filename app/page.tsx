@@ -31,10 +31,10 @@ import { products, searchProducts } from "@/data/products";
 const categories = [
   {
     name: "Groceries & Pantry",
-    description: "Rice, pulses, cooking oils, spices, dry fruits and everyday household provisions.",
+    description: "Rice, dal (lentils), pulses, fresh vegetables, fruits and everyday household provisions.",
     href: "/groceries",
     badge: "Wholesale Sourcing",
-    image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80",
+    image: "/images/groceries-pantry-category.png",
     itemsCount: "500+ Essentials",
   },
   {

@@ -5,10 +5,10 @@ import PageShell from "@/components/PageShell";
 const categories = [
   {
     name: "Groceries & Pantry",
-    description: "Rice, pulses, cooking oils, spices, dry fruits and everyday household provisions.",
+    description: "Rice, dal (lentils), pulses, fresh vegetables, fruits and everyday household provisions.",
     href: "/groceries",
-    image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80",
-    items: ["Rice & grains", "Pulses & Dals", "Cold pressed oils", "Dry fruits combo"],
+    image: "/images/groceries-pantry-category.png",
+    items: ["Sona Masoori Rice", "Organic Toor Dal", "Fresh Veggies & Fruits", "Wood pressed oils"],
   },
   {
     name: "Medicines & OTC",
