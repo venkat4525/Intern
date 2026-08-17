@@ -118,16 +118,24 @@ export default function Header() {
       {/* 2. MAIN STICKY NAVIGATION BAR */}
       <header className="sticky top-0 z-50 w-full border-b border-[#f4c542]/20 bg-[#0b4938]/95 backdrop-blur-md shadow-lg transition-all duration-300">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0 group">
+          {/* Logo & Brand Name */}
+          <Link href="/" className="flex items-center gap-3 shrink-0 group">
             <Image
               src="/carebridge-logo.png"
-              alt="CareBridge"
-              width={180}
-              height={70}
+              alt="CareBridge Logo"
+              width={240}
+              height={90}
               priority
-              className="h-12 w-auto rounded-xl object-contain bg-white/10 p-1 transition duration-300 group-hover:bg-white/20"
+              className="h-14 sm:h-16 md:h-20 w-auto rounded-xl object-contain bg-white/10 p-1.5 transition duration-300 group-hover:bg-white/20 group-hover:scale-105"
             />
+            <div className="flex flex-col justify-center">
+              <span className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white group-hover:text-[#f4c542] transition duration-300 drop-shadow-md">
+                Care<span className="text-[#f4c542]">Bridge</span>
+              </span>
+              <span className="text-[10px] sm:text-xs font-bold tracking-widest text-emerald-200 uppercase -mt-1 hidden sm:inline-block">
+                Family Care Marketplace
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation Items */}

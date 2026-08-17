@@ -7,13 +7,23 @@ export default function Footer() {
     <footer className="bg-[#062d23] text-white border-t border-white/10">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-4 md:px-8">
         <div>
-          <Image
-            src="/carebridge-logo.png"
-            alt="CareBridge"
-            width={220}
-            height={120}
-            className="h-20 w-auto rounded-xl object-contain bg-white/10 p-2"
-          />
+          <Link href="/" className="flex items-center gap-3 shrink-0 group">
+            <Image
+              src="/carebridge-logo.png"
+              alt="CareBridge Logo"
+              width={240}
+              height={90}
+              className="h-16 md:h-20 w-auto rounded-xl object-contain bg-white/10 p-1.5 transition duration-300 group-hover:bg-white/20"
+            />
+            <div className="flex flex-col justify-center">
+              <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white group-hover:text-[#f4c542] transition duration-300">
+                Care<span className="text-[#f4c542]">Bridge</span>
+              </span>
+              <span className="text-[10px] font-bold tracking-widest text-emerald-200 uppercase -mt-0.5">
+                Family Care
+              </span>
+            </div>
+          </Link>
           <p className="mt-4 text-sm leading-6 text-white/75">
             CareBridge is a category-organized family care platform providing wholesale sourcing for groceries, medicines, medical equipment, daily pooja essentials, and festival care boxes with personal assistance.
           </p>
