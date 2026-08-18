@@ -15,6 +15,7 @@ export const rentalEquipment = ["Hospital Beds", "Oxygen Concentrators", "Wheelc
 export const poojaGroups = ["Agarbatti", "Camphor", "Cotton Wicks", "Kumkum & Turmeric", "Diyas & Lamps", "Ghee & Oil", "Kalasha Items", "Daily Pooja Kits", "Flowers & Leaves", "Panchamrutha Kits"];
 
 export const festivalBoxes = [
+  { name: "General Puja Essentials Box", includes: ["Turmeric", "Kumkum", "Sandalwood", "Akshata/rice", "Camphor", "Incense sticks", "Cotton wicks", "Oil/ghee", "Flowers & garlands", "Coconut", "Betel leaves & areca nuts", "Banana leaves", "Kalasha & puja items"] },
   { name: "Deepavali Grand Lakshmi Pooja & Gifting Box", includes: ["Terracotta & brass diyas", "Lakshmi pooja samagri", "Rangoli colors", "500g Dry fruits pack"] },
   { name: "Pongal & Sankranti Harvest Care Box", includes: ["Clay pot decoration", "Organic raw rice & jaggery", "Fresh turmeric tie", "Pooja kit"] },
   { name: "Holi Organic & Herbal Colors Box", includes: ["5 Herbal gulal packs", "Coconut skin protection oil", "Thandai mix", "Stain-free colors"] },

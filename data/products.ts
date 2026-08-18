@@ -218,6 +218,28 @@ export const products: Product[] = [
     unit: "250g Jar"
   },
   {
+    id: "general-puja-essentials-box",
+    name: "General Puja Essentials & Sacred Ritual Care Box",
+    category: "care-box",
+    categoryLabel: "Festival Care Boxes",
+    price: 899,
+    mrp: 1199,
+    rating: 4.9,
+    reviewsCount: 140,
+    image: "/images/general-puja-box.jpg",
+    description: "Complete all-in-one sacred ritual kit with turmeric, kumkum, sandalwood, akshata rice, camphor, incense sticks, cotton wicks, oil/ghee lamp accessories, flowers, coconut, betel leaves, areca nuts, banana leaves, and kalasha items.",
+    specifications: [
+      "Turmeric, Kumkum, Sandalwood paste & Akshata rice",
+      "Bhimseni Camphor, Incense sticks & Cotton wicks",
+      "Pooja Oil/Ghee lamp accessories & Kalasha items",
+      "Coconut, Betel leaves, Areca nuts & Banana leaves guidance"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "Complete All-in-One Box"
+  },
+  {
     id: "ganesha-chaturthi-care-box",
     name: "Ganesha Chaturthi Complete Pooja Care Box",
     category: "care-box",

@@ -36,6 +36,12 @@ export default function SectionPage({
 
     const groupLower = selectedGroup.toLowerCase();
 
+    if (groupLower.includes("general") || groupLower.includes("puja essentials")) {
+      return (
+        product.name.toLowerCase().includes("general") ||
+        product.id.includes("general")
+      );
+    }
     if (groupLower.includes("diwali") || groupLower.includes("deepavali")) {
       return (
         product.name.toLowerCase().includes("diwali") ||
