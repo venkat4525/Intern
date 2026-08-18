@@ -4,7 +4,6 @@ A Next.js 15 marketplace UI for CareBridge with no public prices.
 
 ## Included
 - Category-first homepage
-- Groceries
 - Medicines
 - Medical equipment purchase and rental
 - Daily pooja essentials

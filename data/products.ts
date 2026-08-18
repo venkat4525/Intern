@@ -1,7 +1,7 @@
 export interface Product {
   id: string;
   name: string;
-  category: "groceries" | "medicines" | "medical-equipment" | "pooja" | "care-box" | "wellness" | "home-care";
+  category: "medicines" | "medical-equipment" | "pooja" | "care-box" | "wellness" | "home-care";
   categoryLabel: string;
   price: number;
   mrp: number;
@@ -149,115 +149,6 @@ export const products: Product[] = [
     unit: "1 Unit"
   },
 
-  // --- GROCERIES ---
-  {
-    id: "sona-masoori-rice-25kg",
-    name: "Royal Sona Masoori Raw Rice (25 kg Bag)",
-    category: "groceries",
-    categoryLabel: "Groceries",
-    price: 1399,
-    mrp: 1650,
-    rating: 4.8,
-    reviewsCount: 310,
-    image: "/images/sona-masoori-rice.png",
-    description: "Aromatic, lightweight, premium aged Sona Masoori rice sourced directly from Karnataka farms.",
-    specifications: [
-      "100% pure aged raw rice",
-      "Pesticide-tested quality grain",
-      "Ideal for daily consumption",
-      "Net Weight: 25 kg"
-    ],
-    inStock: true,
-    featured: true,
-    enquiryType: "purchase",
-    unit: "25 kg Bag"
-  },
-  {
-    id: "toor-dal-premium-5kg",
-    name: "Organic Unpolished Toor Dal / Arhar Dal (5 kg)",
-    category: "groceries",
-    categoryLabel: "Groceries",
-    price: 749,
-    mrp: 899,
-    rating: 4.9,
-    reviewsCount: 185,
-    image: "/images/toor-dal.png",
-    description: "High-protein, unpolished Desi Toor Dal without synthetic chemical processing for delicious, healthy sambar and dal.",
-    specifications: [
-      "Unpolished & natural protein rich",
-      "Easy to cook with rich aroma",
-      "Zero added colors or chemical polishing",
-      "Net Weight: 5 kg"
-    ],
-    inStock: true,
-    featured: true,
-    enquiryType: "purchase",
-    unit: "5 kg Pack"
-  },
-  {
-    id: "fresh-veggies-fruits-basket",
-    name: "Fresh Organic Farm Vegetables & Fruits Basket",
-    category: "groceries",
-    categoryLabel: "Groceries & Fresh Produce",
-    price: 699,
-    mrp: 899,
-    rating: 4.9,
-    reviewsCount: 145,
-    image: "/images/fresh-veggies-fruits.png",
-    description: "Hand-picked farm fresh seasonal vegetables and fruits delivered directly to your doorstep in Bengaluru.",
-    specifications: [
-      "Includes tomatoes, carrots, spinach, bell peppers, apples & oranges",
-      "100% farm fresh & washed produce",
-      "Chemical-free organic sourcing",
-      "Daily doorstep delivery available"
-    ],
-    inStock: true,
-    featured: true,
-    enquiryType: "purchase",
-    unit: "Weekly Family Basket"
-  },
-  {
-    id: "cold-pressed-groundnut-oil-5l",
-    name: "Traditional Wood Pressed Groundnut Oil (5 Liters)",
-    category: "groceries",
-    categoryLabel: "Groceries",
-    price: 1199,
-    mrp: 1450,
-    rating: 4.9,
-    reviewsCount: 128,
-    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80",
-    description: "Pure cold-pressed peanut oil extracted using wooden Chekku method. Zero chemicals, preservatives or refining.",
-    specifications: [
-      "100% natural wood pressed (Mara Chekku)",
-      "Heart-friendly MUFA rich oil",
-      "High smoke point ideal for Indian cooking",
-      "5 Liter tin container"
-    ],
-    inStock: true,
-    enquiryType: "purchase",
-    unit: "5 Liter Tin"
-  },
-  {
-    id: "dry-fruits-assorted-pack",
-    name: "Premium Royal Dry Fruits Combo (1 kg)",
-    category: "groceries",
-    categoryLabel: "Groceries",
-    price: 1099,
-    mrp: 1499,
-    rating: 4.8,
-    reviewsCount: 92,
-    image: "https://images.unsplash.com/photo-1596560548464-f010549b84d7?auto=format&fit=crop&w=600&q=80",
-    description: "Nutritious mix of California Almonds, Jumbo Cashews, Afghan Raisins, and Iranian Pistachios.",
-    specifications: [
-      "250g Almonds + 250g Cashews + 250g Raisins + 250g Pistachios",
-      "Vacuum sealed for crunch & freshness",
-      "100% natural without preservatives"
-    ],
-    inStock: true,
-    enquiryType: "purchase",
-    unit: "1 kg Pack"
-  },
-
   // --- MEDICINES & WELLNESS ---
   {
     id: "multivitamin-senior-care",
@@ -368,6 +259,116 @@ export const products: Product[] = [
     inStock: true,
     enquiryType: "purchase",
     unit: "Complete Box"
+  },
+  {
+    id: "deepavali-grand-celebration-box",
+    name: "Deepavali (Diwali) Grand Lakshmi Pooja & Gifting Care Box",
+    category: "care-box",
+    categoryLabel: "Festival Care Boxes",
+    price: 1699,
+    mrp: 2199,
+    rating: 5.0,
+    reviewsCount: 112,
+    image: "https://images.unsplash.com/photo-1605807963283-9b2f6ef53702?auto=format&fit=crop&w=600&q=80",
+    description: "Complete Diwali festival kit with brass diyas, organic wicks, pure pooja oil, rangoli colours, Lakshmi pooja kit, and premium dry-fruit gifting pack.",
+    specifications: [
+      "12 Handmade terracotta & brass diyas",
+      "Lakshmi-Ganesha pooja samagri & incense",
+      "Natural vibrant rangoli color powders",
+      "500g Premium dry fruit gifting box included"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "Complete Festival Box"
+  },
+  {
+    id: "pongal-sankranti-celebration-box",
+    name: "Traditional Harvest Pongal & Sankranti Care Box",
+    category: "care-box",
+    categoryLabel: "Festival Care Boxes",
+    price: 1399,
+    mrp: 1799,
+    rating: 4.9,
+    reviewsCount: 94,
+    image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80",
+    description: "Authentic harvest festival care box featuring clay pot accessories, raw rice, organic jaggery, cardamom, turmeric plant ties, and festive pooja essentials.",
+    specifications: [
+      "Traditional clay pot decoration & tying thread",
+      "Organic raw rice & premium organic jaggery",
+      "Fresh ginger & turmeric plant ties",
+      "Complete harvest thanksgiving pooja kit"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "Complete Festival Box"
+  },
+  {
+    id: "holi-organic-colors-care-box",
+    name: "Holi Herbal & Eco-Friendly Colors Care Box",
+    category: "care-box",
+    categoryLabel: "Festival Care Boxes",
+    price: 999,
+    mrp: 1399,
+    rating: 4.8,
+    reviewsCount: 86,
+    image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80",
+    description: "Safe & skin-friendly Holi celebration box containing 100% natural herbal gulal powders, organic skin protection oil, and festive thandai mix.",
+    specifications: [
+      "5 Packs of 100% non-toxic herbal gulal (Cornstarch base)",
+      "Pure cold-pressed coconut oil for skin protection",
+      "Traditional thandai spice powder mix",
+      "Stain-free & lab-tested skin safe materials"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "Complete Celebration Box"
+  },
+  {
+    id: "navaratri-dussehra-golu-box",
+    name: "Navaratri & Dussehra Grand Golu Pooja Box",
+    category: "care-box",
+    categoryLabel: "Festival Care Boxes",
+    price: 1599,
+    mrp: 2099,
+    rating: 5.0,
+    reviewsCount: 105,
+    image: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=600&q=80",
+    description: "Comprehensive 9-day Navaratri & Dussehra pooja kit including Golu lighting, daily kumkum packets, prasadam sundal ingredients, and Ayudha pooja essentials.",
+    specifications: [
+      "9-Day daily pooja wicks, camphor & oil packs",
+      "Ayudha pooja vehicle & tool blessing items",
+      "Traditional kumkum & turmeric guest packets",
+      "Organic sundal pulse sampler & pooja guide"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "Complete 9-Day Box"
+  },
+  {
+    id: "krishna-janmashtami-care-box",
+    name: "Krishna Janmashtami Devotional Celebration Box",
+    category: "care-box",
+    categoryLabel: "Festival Care Boxes",
+    price: 1199,
+    mrp: 1599,
+    rating: 4.9,
+    reviewsCount: 89,
+    image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=600&q=80",
+    description: "Charming Janmashtami celebration pack complete with Little Krishna footprint stencils, butter pot decor, sacred flute, tulsi wicks, and prasadam kit.",
+    specifications: [
+      "Little Krishna footprint floor stencil & rangoli paste",
+      "Miniature brass butter pot & decorative peacock feather",
+      "Pure Bhimseni camphor, tulsi wicks & butter lamp oil",
+      "Easy homemade butter-ghee prasadam recipe guide"
+    ],
+    inStock: true,
+    featured: true,
+    enquiryType: "purchase",
+    unit: "Complete Festival Box"
   },
 
   // --- HOME CARE ---

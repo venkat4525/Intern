@@ -18,7 +18,6 @@ import {
   PackageCheck,
   Stethoscope,
   Pill,
-  ShoppingBasket,
   Sun,
   Home,
   Gift,
@@ -27,7 +26,6 @@ import {
 } from "lucide-react";
 
 const categoryMenuItems = [
-  { name: "Groceries & Pantry", href: "/groceries", icon: ShoppingBasket, desc: "Rice, pulses, oils & staples" },
   { name: "Medicines & OTC", href: "/medicines", icon: Pill, desc: "Prescription support & vitamins" },
   { name: "Medical Equipment", href: "/medical-equipment", icon: Stethoscope, desc: "BP Monitors, oximeters & devices" },
   { name: "Daily Pooja Essentials", href: "/pooja", icon: Sun, desc: "Camphor, wicks, kumkum & diyas" },

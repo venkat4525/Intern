@@ -58,7 +58,7 @@ export default function CartPage() {
           </div>
           <h1 className="text-3xl font-extrabold text-[#173f35]">Your Shopping Cart is Empty</h1>
           <p className="mt-3 text-base text-gray-600 max-w-md mx-auto">
-            Looks like you haven't added any essentials to your cart yet. Explore our wide range of groceries, medical equipment, and daily pooja items.
+            Looks like you haven't added any essentials to your cart yet. Explore our wide range of medicines, medical equipment, and daily pooja items.
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <Link

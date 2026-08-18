@@ -8,7 +8,6 @@ Main folders:
 Main pages:
 - Home
 - Categories
-- Groceries
 - Medicines
 - Medical Equipment
 - Rentals

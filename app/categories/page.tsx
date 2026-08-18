@@ -4,13 +4,6 @@ import PageShell from "@/components/PageShell";
 
 const categories = [
   {
-    name: "Groceries & Pantry",
-    description: "Rice, dal (lentils), pulses, fresh vegetables, fruits and everyday household provisions.",
-    href: "/groceries",
-    image: "/images/groceries-pantry-category.png",
-    items: ["Sona Masoori Rice", "Organic Toor Dal", "Fresh Veggies & Fruits", "Wood pressed oils"],
-  },
-  {
     name: "Medicines & OTC",
     description: "Prescription support, OTC products, vitamins, Ayurveda and regular medicine requirements.",
     href: "/medicines",
@@ -68,7 +61,7 @@ export default function CategoriesPage() {
           </h1>
 
           <p className="mt-5 max-w-3xl text-lg leading-8 text-white/80">
-            Browse high-resolution categories for groceries, medicines, medical equipment, daily pooja essentials, festival care boxes, and home-care support.
+            Browse high-resolution categories for medicines, medical equipment, daily pooja essentials, festival care boxes, and home-care support.
           </p>
         </div>
       </section>

@@ -28,9 +28,68 @@ export default function SectionPage({
   const filteredProducts = categoryProducts.filter((product) => {
     const matchesSearch =
       product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.description.toLowerCase().includes(searchQuery.toLowerCase());
-    
-    return matchesSearch;
+      product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.specifications.some((s) => s.toLowerCase().includes(searchQuery.toLowerCase()));
+
+    if (!matchesSearch) return false;
+    if (selectedGroup === "All") return true;
+
+    const groupLower = selectedGroup.toLowerCase();
+
+    if (groupLower.includes("diwali") || groupLower.includes("deepavali")) {
+      return (
+        product.name.toLowerCase().includes("diwali") ||
+        product.name.toLowerCase().includes("deepavali") ||
+        product.id.includes("deepavali")
+      );
+    }
+    if (groupLower.includes("pongal") || groupLower.includes("sankranti")) {
+      return (
+        product.name.toLowerCase().includes("pongal") ||
+        product.name.toLowerCase().includes("sankranti") ||
+        product.id.includes("pongal")
+      );
+    }
+    if (groupLower.includes("holi")) {
+      return product.name.toLowerCase().includes("holi") || product.id.includes("holi");
+    }
+    if (groupLower.includes("navaratri") || groupLower.includes("dussehra")) {
+      return (
+        product.name.toLowerCase().includes("navaratri") ||
+        product.name.toLowerCase().includes("dussehra") ||
+        product.id.includes("navaratri")
+      );
+    }
+    if (groupLower.includes("janmashtami") || groupLower.includes("krishna")) {
+      return (
+        product.name.toLowerCase().includes("janmashtami") ||
+        product.name.toLowerCase().includes("krishna") ||
+        product.id.includes("krishna")
+      );
+    }
+    if (groupLower.includes("ganesha") || groupLower.includes("ganesh")) {
+      return (
+        product.name.toLowerCase().includes("ganesha") ||
+        product.name.toLowerCase().includes("ganesh") ||
+        product.id.includes("ganesha")
+      );
+    }
+    if (groupLower.includes("varalakshmi") || groupLower.includes("vratham")) {
+      return (
+        product.name.toLowerCase().includes("varalakshmi") ||
+        product.name.toLowerCase().includes("vratham") ||
+        product.id.includes("varalakshmi")
+      );
+    }
+
+    const keywords = groupLower.split(/[\s/&]+/);
+    return keywords.some(
+      (kw) =>
+        kw.length > 2 &&
+        (product.name.toLowerCase().includes(kw) ||
+          product.description.toLowerCase().includes(kw) ||
+          product.categoryLabel.toLowerCase().includes(kw))
+    );
   });
 
   return (
@@ -91,12 +150,17 @@ export default function SectionPage({
                   All Items ({categoryProducts.length})
                 </button>
                 {subGroups.map((group) => (
-                  <span
+                  <button
                     key={group}
-                    className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-gray-700 border border-gray-200"
+                    onClick={() => setSelectedGroup(selectedGroup === group ? "All" : group)}
+                    className={`rounded-full px-4 py-2 text-xs font-bold transition-all ${
+                      selectedGroup === group
+                        ? "bg-[#0b4938] text-white shadow"
+                        : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+                    }`}
                   >
                     {group}
-                  </span>
+                  </button>
                 ))}
               </div>
             </div>

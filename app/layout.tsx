@@ -4,7 +4,7 @@ import ClientProviders from "../components/ClientProviders";
 
 export const metadata: Metadata = {
   title: "CareBridge | Family Care Marketplace & Equipment",
-  description: "Quality groceries, medicines, medical equipment, rentals, pooja essentials and festival care boxes delivered with personal assistance."
+  description: "Quality medicines, medical equipment, rentals, pooja essentials and festival care boxes delivered with personal assistance."
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

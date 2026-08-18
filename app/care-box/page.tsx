@@ -7,7 +7,7 @@ export default function CareBoxPage() {
       title="Festival Care Boxes"
       intro="Complete festival and vratha care boxes thoughtfully assembled with 21+ essential items and delivered directly to your loved ones."
       categorySlug="care-box"
-      subGroups={["Ganesha Chaturthi", "Varalakshmi Vratham", "Navaratri Pooja", "Deepavali Essentials"]}
+      subGroups={["Diwali / Deepavali", "Pongal / Sankranti", "Holi Celebration", "Navaratri & Dussehra", "Krishna Janmashtami", "Ganesha Chaturthi", "Varalakshmi Vratham"]}
     />
   );
 }

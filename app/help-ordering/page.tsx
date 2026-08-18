@@ -31,7 +31,7 @@ const helpOptions = [
   {
     title: "Order for Loved Ones",
     description:
-      "Arrange groceries, medicines or care products for parents and family members.",
+      "Arrange medicines or care products for parents and family members.",
     icon: Users,
   },
   {
@@ -77,7 +77,7 @@ export default function HelpOrderingPage() {
 
             <p className="mt-6 text-lg leading-8 text-white/80">
               Not comfortable placing an online order? Contact the CareBridge
-              team by phone or WhatsApp. We will help you arrange groceries,
+              team by phone or WhatsApp. We will help you arrange
               medicines, medical equipment and family-care essentials.
             </p>
 
@@ -180,8 +180,8 @@ export default function HelpOrderingPage() {
             <div className="mt-7 space-y-4">
               {[
                 {
-                  label: "Groceries and household essentials",
-                  icon: ShoppingBasket,
+                  label: "Daily pooja and festival care boxes",
+                  icon: PackageCheck,
                 },
                 {
                   label: "Medicines and regular health needs",

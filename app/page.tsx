@@ -30,14 +30,6 @@ import { products, searchProducts } from "@/data/products";
 
 const categories = [
   {
-    name: "Groceries & Pantry",
-    description: "Rice, dal (lentils), pulses, fresh vegetables, fruits and everyday household provisions.",
-    href: "/groceries",
-    badge: "Wholesale Sourcing",
-    image: "/images/groceries-pantry-category.png",
-    itemsCount: "500+ Essentials",
-  },
-  {
     name: "Medicines & OTC",
     description: "Prescription support, OTC products, daily vitamins and regular medicine needs.",
     href: "/medicines",
@@ -100,7 +92,7 @@ const advantages = [
   },
   {
     title: "Category-Organized Catalog",
-    description: "Groceries, medicines, equipment, pooja items and festival boxes in one place.",
+    description: "Medicines, medical equipment, pooja items and festival boxes in one place.",
     icon: PackageCheck,
   },
   {
@@ -130,7 +122,7 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-white/80">
-              Browse categories for groceries, medicines, medical equipment, daily pooja items, and festival boxes. Submit enquiries directly for wholesale pricing and personal assistance.
+              Browse categories for medicines, medical equipment, daily pooja items, and festival boxes. Submit enquiries directly for wholesale pricing and personal assistance.
             </p>
 
             {/* Quick Hero Search Input */}
@@ -397,7 +389,7 @@ export default function HomePage() {
             Let us help you arrange your family essentials
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-base text-white/80">
-            Contact the CareBridge desk for groceries, medicines, medical equipment, festival boxes or custom family care orders.
+            Contact the CareBridge desk for medicines, medical equipment, festival boxes or custom family care orders.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">

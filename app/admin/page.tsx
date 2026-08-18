@@ -40,8 +40,8 @@ export default function AdminDashboardPage() {
   const [showAddProductModal, setShowAddProductModal] = useState(false);
   const [newProduct, setNewProduct] = useState<Partial<Product>>({
     name: "",
-    category: "groceries",
-    categoryLabel: "Groceries",
+    category: "medicines",
+    categoryLabel: "Medicines",
     price: 499,
     mrp: 699,
     rating: 4.8,
@@ -98,7 +98,7 @@ export default function AdminDashboardPage() {
     const createdProduct: Product = {
       id: `p-${Date.now()}`,
       name: newProduct.name,
-      category: (newProduct.category as any) || "groceries",
+      category: (newProduct.category as any) || "medicines",
       categoryLabel: newProduct.categoryLabel || "General",
       price: Number(newProduct.price),
       mrp: Number(newProduct.mrp || newProduct.price),
@@ -115,8 +115,8 @@ export default function AdminDashboardPage() {
     setShowAddProductModal(false);
     setNewProduct({
       name: "",
-      category: "groceries",
-      categoryLabel: "Groceries",
+      category: "medicines",
+      categoryLabel: "Medicines",
       price: 499,
       mrp: 699,
       rating: 4.8,
@@ -526,7 +526,6 @@ export default function AdminDashboardPage() {
                         }
                         className="w-full rounded-xl border border-gray-300 px-3 py-2 text-xs focus:outline-none focus:border-[#0b4938]"
                       >
-                        <option value="groceries">Groceries</option>
                         <option value="medicines">Medicines</option>
                         <option value="medical-equipment">Medical Equipment</option>
                         <option value="rentals">Equipment Rentals</option>

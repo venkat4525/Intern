@@ -25,14 +25,13 @@ export default function Footer() {
             </div>
           </Link>
           <p className="mt-4 text-sm leading-6 text-white/75">
-            CareBridge is a category-organized family care platform providing wholesale sourcing for groceries, medicines, medical equipment, daily pooja essentials, and festival care boxes with personal assistance.
+            CareBridge is a category-organized family care platform providing wholesale sourcing for medicines, medical equipment, daily pooja essentials, and festival care boxes with personal assistance.
           </p>
         </div>
 
         <div>
           <h3 className="text-lg font-bold text-[#f4c542]">Product Categories</h3>
           <div className="mt-4 flex flex-col gap-2.5 text-sm text-white/80">
-            <Link href="/groceries" className="hover:text-white transition">Groceries & Pantry</Link>
             <Link href="/medicines" className="hover:text-white transition">Medicines & Supplements</Link>
             <Link href="/medical-equipment" className="hover:text-white transition">Medical Devices & Equipment</Link>
             <Link href="/pooja" className="hover:text-white transition">Daily Pooja Essentials</Link>
