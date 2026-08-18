@@ -269,7 +269,7 @@ export const products: Product[] = [
     mrp: 2199,
     rating: 5.0,
     reviewsCount: 112,
-    image: "https://images.unsplash.com/photo-1605807963283-9b2f6ef53702?auto=format&fit=crop&w=600&q=80",
+    image: "/images/deepavali-pooja-box.jpg",
     description: "Complete Diwali festival kit with brass diyas, organic wicks, pure pooja oil, rangoli colours, Lakshmi pooja kit, and premium dry-fruit gifting pack.",
     specifications: [
       "12 Handmade terracotta & brass diyas",
@@ -291,7 +291,7 @@ export const products: Product[] = [
     mrp: 1799,
     rating: 4.9,
     reviewsCount: 94,
-    image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80",
+    image: "/images/pongal-harvest-box.jpg",
     description: "Authentic harvest festival care box featuring clay pot accessories, raw rice, organic jaggery, cardamom, turmeric plant ties, and festive pooja essentials.",
     specifications: [
       "Traditional clay pot decoration & tying thread",
@@ -313,7 +313,7 @@ export const products: Product[] = [
     mrp: 1399,
     rating: 4.8,
     reviewsCount: 86,
-    image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80",
+    image: "/images/holi-care-box.jpg",
     description: "Safe & skin-friendly Holi celebration box containing 100% natural herbal gulal powders, organic skin protection oil, and festive thandai mix.",
     specifications: [
       "5 Packs of 100% non-toxic herbal gulal (Cornstarch base)",
@@ -335,7 +335,7 @@ export const products: Product[] = [
     mrp: 2099,
     rating: 5.0,
     reviewsCount: 105,
-    image: "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=600&q=80",
+    image: "/images/navaratri-golu-box.jpg",
     description: "Comprehensive 9-day Navaratri & Dussehra pooja kit including Golu lighting, daily kumkum packets, prasadam sundal ingredients, and Ayudha pooja essentials.",
     specifications: [
       "9-Day daily pooja wicks, camphor & oil packs",
@@ -357,7 +357,7 @@ export const products: Product[] = [
     mrp: 1599,
     rating: 4.9,
     reviewsCount: 89,
-    image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?auto=format&fit=crop&w=600&q=80",
+    image: "/images/krishna-janmashtami-box.jpg",
     description: "Charming Janmashtami celebration pack complete with Little Krishna footprint stencils, butter pot decor, sacred flute, tulsi wicks, and prasadam kit.",
     specifications: [
       "Little Krishna footprint floor stencil & rangoli paste",
